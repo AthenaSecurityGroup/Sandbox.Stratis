@@ -1,0 +1,214 @@
+onLoadName = "Athena Security Group";
+onLoadMission = "Support the server at AthenaSecurityGroup.com, or visit our reddit at /r/AthenaSecurityGroup.";
+author = "DEL-J, Diffusion9, MosesUK";
+disabledAI=1;
+disableChannels[]={0,2,4,6};
+debriefing=1;
+enableDebugConsole = 1;
+forceRotorLibSimulation = 1;
+
+class Header {
+	gameType = Sandbox;
+	minplayers = 1;
+	maxPlayers = 139;
+};
+
+respawn = 3;
+respawndelay = 2;
+respawnTemplates[] = {"Revive", "Wave"};
+respawndialog = false;
+respawnOnStart = -1;
+reviveDelay = 60;
+reviveBleedOutDelay = 600;
+respawnButton = 0;
+
+class cfgFunctions {
+	class ASG {
+		file = "functions";
+		class loadoutFunctions {
+			class equipPlayer {};
+			class setUniform {};
+		};
+		class radio {
+			class radioControl {};
+		};
+		class gridTrackerSystem {
+			class gridTracker {};
+			class gridResponder {};
+			class gridTerritoryTracker {};
+			class gridGetCent {};
+		};
+		class baseDeployment {
+			class baseEntryCreator {};
+			class baseMenuUpdater {};
+			class baseHandler {};
+			class baseDeployer {};
+			class baseDeployBoxes {};
+			class baseRemoveBoxes {};
+			class playerSpawn {};
+			class objectMapper {};
+			class getDefaultBoxAnchor {};
+		};
+		class logistics {
+			class logisticsRequestSender {};
+			class logisticsRequestReceiver {};
+			class logisticsResponder {};
+			class logisticsFreightHandler {};
+			class logisticsDeliverOffroad {};
+		};
+		class general {
+			class menuDisableEntries {};
+			class createCargoArray {};
+			class cargoArrayAdd {};
+		};
+	};
+	class KK {
+		file = "functions";
+		class arrayFunctions {
+			class findAll {};
+			class findAllGetPath {};
+			class unShift {};
+			class pushStack {};
+		};
+	};
+	class MOSES {
+		class BoxRestrictions {
+			file = "functions";
+			class accessInfo {};
+		};
+	};
+};
+
+class CfgCommunicationMenu {
+	class earplugToggle {
+		text = "Toggle Earplugs";
+		submenu = "";
+        expression = "_this execVM 'scripts\commItem_earplugsToggle.sqf';";
+        cursor = "";
+        enable = "1";
+        removeAfterExpressionCall = 0;
+	};
+	class radioControl {
+		text = "Radio Control";
+        submenu = "#USER:comm_radioControlMenu";
+        expression = "";
+        cursor = ""; 
+        enable = "1"; 
+        removeAfterExpressionCall = 0;
+	};
+	class baseDeploy {
+		text = "Deployment";
+        submenu = "#USER:comm_baseDeployMenu";
+        expression = "";
+        cursor = ""; 
+        enable = "1"; 
+        removeAfterExpressionCall = 0;
+	};
+	class logistics {
+		text = "Logistics";
+        submenu = "#USER:comm_logisticsMenu";
+        expression = "";
+        cursor = "";
+        enable = "1"; 
+        removeAfterExpressionCall = 0;
+	};
+};
+ 
+class CfgSounds {
+	sounds[] = {};
+	class radio_start {
+		name = "Radio begin broadcast sound";
+		sound[] = {"sounds\radio\start.ogg",0.4,1};
+		titles[] = {0,""};
+	};
+	class radio_end {
+		name = "Radio end broadcast sound";
+		sound[] = {"sounds\radio\end.ogg",0.4,1};
+		titles[] = {0,""};
+	};
+};
+
+class CfgUnitInsignia {
+	class r_col {
+        displayName = "Colonel";
+        texture = "textures\insig\col.paa";
+    };
+	class r_ltc {
+        displayName = "Lieutenant Colonel";
+        texture = "textures\insig\ltc.paa";
+    };
+	class r_maj {
+        displayName = "Major";
+        texture = "textures\insig\maj.paa";
+    };
+	class r_cpt {
+        displayName = "Captain";
+        texture = "textures\insig\cpt.paa";
+    };
+	class r_1lt {
+        displayName = "First Lieutenant";
+        texture = "textures\insig\1lt.paa";
+    };
+	class r_2lt {
+        displayName = "Second Lieutenant";
+        texture = "textures\insig\2lt.paa";
+    };
+	class r_to1 {
+        displayName = "Apprentice";
+        texture = "textures\insig\to1.paa";
+    };
+	class r_to2 {
+        displayName = "Adept";
+        texture = "textures\insig\to2.paa";
+    };
+	class r_to3 {
+        displayName = "Chief";
+        texture = "textures\insig\to3.paa";
+    };
+	class r_to4 {
+        displayName = "Master";
+        texture = "textures\insig\to4.paa";
+    };
+	class r_to5 {
+        displayName = "Master Chief";
+        texture = "textures\insig\to5.paa";
+    };
+	class r_sgm {
+        displayName = "Sergeant Major";
+        texture = "textures\insig\sgm.paa";
+    };
+	class r_1sg {
+        displayName = "First Sergeant";
+        texture = "textures\insig\1sg.paa";
+    };
+	class r_sfc {
+        displayName = "Sergeant First Class";
+        texture = "textures\insig\sfc.paa";
+    };
+	class r_ssg {
+        displayName = "Staff Sergeant";
+        texture = "textures\insig\ssg.paa";
+    };
+	class r_sgt {
+        displayName = "Sergeant";
+        texture = "textures\insig\sgt.paa";
+    };
+	class r_cpl {
+        displayName = "Corporal";
+        texture = "textures\insig\cpl.paa";
+    };
+	class r_psp {
+        displayName = "Private Specialist";
+        texture = "textures\insig\psp.paa";
+    };
+	class r_pvt {
+        displayName = "Private";
+        texture = "textures\insig\pvt.paa";
+    };
+};
+
+// OUTLAW MAG REPACK
+#include "scripts\outlw_magRepack\Configs\defines.hpp"
+#include "scripts\outlw_magRepack\Configs\MagRepack_Dialog_Main.hpp"
+#include "scripts\outlw_magRepack\Configs\MagRepack_Dialog_Keybindings.hpp"
+#include "scripts\outlw_magRepack\Configs\MagRepack_Dialog_About.hpp"
