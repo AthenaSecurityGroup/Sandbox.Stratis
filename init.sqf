@@ -32,6 +32,7 @@ defaultHeloPosition = [8956,27248];
 // Disconnected Player Body Cleanup
 // Only deletes players body if completely empty.
 addMissionEventHandler ["HandleDisconnect",{
+	private ["_weapons"];
 	_itemCntArray = [];
 	_discObj = _this select 0;
 	_uniformItems = uniformItems _discObj;
@@ -40,5 +41,8 @@ addMissionEventHandler ["HandleDisconnect",{
 	if (!(_backpackItems isEqualTo objNull)) then {_itemCntArray pushBack _backpackItems};
 	_vestItems = vestItems _discObj;
 	if (!(_vestItems isEqualTo [])) then {_itemCntArray pushBack _vestItems};
+	_weapons = weapons _discObj;
+	if !(count _weapons == 0) then { _itemCntArray pushBack _weapons };
+
 	if ((count _itemCntArray) == 0) then {deleteVehicle _discObj};
 }];
