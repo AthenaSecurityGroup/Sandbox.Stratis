@@ -89,6 +89,8 @@ _waypoint2 setWayPointType "LOAD";
 _waypoint2 setWayPointCombatMode "BLUE";
 _waypoint2 setWaypointStatements ["true","[(respawnHelo select 0), true] remoteExec ['hideObjectGlobal', 2]; [(respawnHelo select 0), false] remoteExec ['enableSimulationGlobal', 2];"];
 
+deleteVehicle slingZone;
+
 waitUntil {
 	if (!simulationEnabled heloName) then {
 		[comm_logisticsMenu, "1"] call ASG_fnc_menuDisableEntries;

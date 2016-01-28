@@ -14,25 +14,27 @@ showHUD [true,true,true,true,true,true,false,true];
 
 // Checks for player on Respawn Island (due to how BIS Revive works);
 if ((mapGridPosition player) == (mapGridPosition respawnIsland)) then {
-	diag_log "Player has respawned and is at Respawn Island.";
+	diag_log "onPlayerRespawn: Player has respawned and is at respawnIsland.";
 	[player, true] remoteExec ["hideObjectGlobal", 2];
 	[player, false] remoteExec ["enableSimulationGlobal", 2];
 	_heloStatus = [] spawn {
 		waitUntil {
 			if (!simulationEnabled (respawnHelo select 0)) exitWith {
+				diag_log format ["onPlayerRespawn: respawnHelo simulation is disabled"];
 				sleep (random 2);
 				player moveInCargo (respawnHelo select 0);
 				sleep (random 2);
 				[player, (respawnHelo select 0)] remoteExec ["assignAsCargo", 2];
-				if (!reinforcementEvent) then {
+				// if (!reinforcementEvent) then {
 					reinforcementEvent = true;
 					publicVariable "reinforcementEvent";	// so other clients see it too.
-				};
+					diag_log format ["onPlayerRespawn: reinforcementEvent has been PV'd"];
+				// };
 				true;
 			};
-			sleep 5;	// Check status every 5 seconds.
-			false;
-		};	
+			sleep 5;	// Check status every five seconds.
+			(!simulationEnabled (respawnHelo select 0));
+		};
 	};
 	
 	_fadeIn = [] spawn {
@@ -49,7 +51,7 @@ if ((mapGridPosition player) == (mapGridPosition respawnIsland)) then {
 					[
 						[_rankName, "<t align = 'center' shadow = '1' size = '1.1' font='PuristaBold'>%1</t><br/>", 10],
 						[_groupName, "<t align = 'center' shadow = '1' size = '0.7'>%1</t><br/>", 5],
-						["Respawn Island, North Altis", "<t align = 'center' shadow = '1' size = '0.5'>%1</t>", 50]
+						[_respawnText, "<t align = 'center' shadow = '1' size = '0.5'>%1</t>", 50]
 					]
 				] spawn BIS_fnc_typeText;				
 				_messageIn = true;

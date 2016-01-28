@@ -66,8 +66,8 @@ trackedPlayers = ["A11","A12","A13"];		// Players to track.
 defaultHeloPosition = [14.1171,8180.34];
 reinforcementEvent = false;				
 publicVariable "reinforcementEvent";
-logisticsRequest = "";					
-publicVariable "resupplyEvent";			
+logisticsRequest = "";
+publicVariable "resupplyEvent";
 respawnHelo = [defaultHeloPosition,180,"B_Heli_Transport_03_unarmed_green_F",WEST] call BIS_fnc_spawnVehicle;
 publicVariable "respawnHelo";
 heloName = (respawnHelo select 0);
@@ -95,10 +95,12 @@ clearItemCargoGlobal heloName;
 // have to wait until the next cycle to be transported in.
 "reinforcementEvent" addPublicVariableEventHandler {
 	_timer = time + 10;
+	diag_log format ["initServer: Reinforcement Event Timer: %1", _timer];
 	private ["_timer"];
 	_activateRespawn = [_timer] spawn {
 		waitUntil {
 			if (time >= (_this select 0)) exitWith {
+				diag_log format ["initServer: Time Trigger: %1", (time >= (_this select 0))];
 				heloName hideObjectGlobal false;
 				heloName enableSimulationGlobal true;
 				sleep 10;
@@ -123,7 +125,7 @@ clearItemCargoGlobal heloName;
 		_heloFlight = false;
 		waitUntil {
 			if ((getPOS heloName select 2) < 1) then {
-				sleep 4;
+				sleep 1;
 				_list = assignedCargo (respawnHelo select 0);
 				{_x action ["Eject", vehicle _x]} forEach _list;
 				_heloFlight = true;
@@ -135,7 +137,7 @@ clearItemCargoGlobal heloName;
 		(respawnHelo select 0) AnimateDoor ['Door_rear_source', 0];
 		sleep 3;
 		// Set waypoint back to simulationKillzone.
-		_waypoint2 = (respawnHelo select 2) addWaypoint [[8956,27248,20], 10];
+		_waypoint2 = (respawnHelo select 2) addWaypoint [defaultHeloPosition, 10];
 		_waypoint2 setWayPointBehaviour "CARELESS";
 		_waypoint2 setWayPointSpeed "FULL";
 		_waypoint2 setWayPointType "MOVE";

@@ -1,4 +1,4 @@
-baseData =
+/* baseData =
 [
     [false, "Patrol Base", ["A16","A17"], [], ["mil_flag", "ColorRed", "Patrol Base One"],[7, 8, 9, 10]],
     [false, "Patrol Base", ["A26","A27"], [], ["mil_flag", "ColorGreen", "Patrol Base Two"],[7, 8, 9, 10]],
@@ -12,10 +12,10 @@ baseData =
     [false, "Forward Operating Base", ["E3","E5","E6","E7"], [], ["mil_flag", "ColorUnknown", "Battalion FOB"],[9, 10]],
     [false, "Main Operating Base", ["R5","R6","R7"], [], ["mil_flag", "ColorUnknown", "Regiment MOB"],[]]
 ];
-
+ */
 // This Array is for testing. A11 has access to all the bases.
 
-/* 
+
 baseData =
 [
     [false, "Patrol Base", ["A11", "A16","A17"], [], ["mil_flag", "ColorRed", "Patrol Base One"],[7, 8, 9, 10]],
@@ -30,4 +30,3 @@ baseData =
     [false, "Forward Operating Base", ["A11", "E3","E5","E6","E7"], [], ["mil_flag", "ColorUnknown", "Battalion FOB"],[9, 10]],
     [false, "Main Operating Base", ["A11", "R5","R6","R7"], [], ["mil_flag", "ColorUnknown", "Regiment MOB"],[]]
 ];
-*/
