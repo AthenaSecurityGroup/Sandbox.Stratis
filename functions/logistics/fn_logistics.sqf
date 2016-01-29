@@ -63,6 +63,8 @@ clearItemCargoGlobal heloName;
 		unassignVehicle _x;
 	} forEach assignedCargo heloName;
 
+	waitUntil { count assignedCargo heloName == 0 };
+
 	heloName AnimateDoor ['Door_rear_source', 0];
 	sleep 3;
 	// Set waypoint back to simulationKillzone.
