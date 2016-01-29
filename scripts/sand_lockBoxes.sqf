@@ -23,9 +23,9 @@
 ["S36",["A3M","A3R","A35","A36","A5","A6","A6O","A7"]] call MOSES_fnc_accessInfo;
  
 //Weapons
-["S41",["A4","A4B","A4C","A44","A45","A46","A47","A48","A49","A5","A6","A6O","A7"]] call MOSES_fnc_accessInfo;
-["S42",["A4","A4B","A4C","A44","A45","A46","A47","A48","A49","A5","A6","A6O","A7"]] call MOSES_fnc_accessInfo;
-["S43",["A4","A4B","A4C","A44","A45","A46","A47","A48","A49","A5","A6","A6O","A7"]] call MOSES_fnc_accessInfo;
+["S41",["A4","A4A","A4B","A44","A45","A46","A47","A48","A49","A5","A6","A6O","A7"]] call MOSES_fnc_accessInfo;
+["S42",["A4","A4A","A4B","A44","A45","A46","A47","A48","A49","A5","A6","A6O","A7"]] call MOSES_fnc_accessInfo;
+["S43",["A4","A4A","A4B","A44","A45","A46","A47","A48","A49","A5","A6","A6O","A7"]] call MOSES_fnc_accessInfo;
  
 //Headquarters
 ["S61",["A5","A6","A6M","A6O","A6R","A7"]] call MOSES_fnc_accessInfo;

@@ -1077,7 +1077,8 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=1;
-					text="A4B";
+					text="A4A";
+					description="Weapons Team Leader";
 				};
 				class Item4
 				{
@@ -1113,7 +1114,8 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=1;
-					text="A4C";
+					text="A4B";
+					description="Weapons Team Leader";
 				};
 				class Item7
 				{

@@ -4,7 +4,7 @@ rankAssignments = [
 	// Private Specialists
 	["r_psp",["A1M","A1R","A2M","A2R","A3M","A3R","A44","A45","A46","A47","A48","A49","B1R"]],
 	// Corporals
-	["r_cpl",["A11A","A11B","A12A","A12B","A13A","A12B","A21A","A21B","A22A","A22B","A23A","A22B","A31A","A31B","A32A","A32B","A33A","A32B","A4B","A4C","A6M","A6R","B11B","B12B"]],
+	["r_cpl",["A11A","A11B","A12A","A12B","A13A","A12B","A21A","A21B","A22A","A22B","A23A","A22B","A31A","A31B","A32A","A32B","A33A","A32B","A4A","A4B","A6M","A6R","B11B","B12B"]],
 	// Sergeants
 	["r_sgt",["A11","A12","A13","A21","A22","A23","A31","A32","A33","B11","B12"]],
 	// Staff Sergeants
