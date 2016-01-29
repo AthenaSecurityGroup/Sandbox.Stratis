@@ -27,7 +27,7 @@ enableSentences false;
 showSubtitles false; 
 showHUD [true,true,true,true,true,true,false,true];
 
-// ASG Handbook, by DEL-J
+// ASG Handbook by DEL-J
 [] execVM "scripts\handbook.sqf";
 
 // MOSES' MortarHandler

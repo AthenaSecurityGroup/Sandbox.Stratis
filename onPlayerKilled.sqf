@@ -1,1 +1,1 @@
-cutText ["Reinforcing...","BLACK"];
+cutText ["Awaiting Deployment.","BLACK"];

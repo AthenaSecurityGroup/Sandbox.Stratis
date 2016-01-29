@@ -1665,7 +1665,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2066.1887,6.73,5600.8931};
+					position[]={2066.2671,6.73,5600.7466};
+					offsetY=50;
 					special="NONE";
 					id=119;
 					side="LOGIC";
@@ -1685,7 +1686,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2067.5081,6.73,5600.8931};
+					position[]={2067.5864,6.73,5600.7466};
+					offsetY=50;
 					special="NONE";
 					id=120;
 					side="LOGIC";
@@ -1705,7 +1707,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2068.8274,6.73,5600.8892};
+					position[]={2068.9058,6.73,5600.7427};
+					offsetY=50;
 					special="NONE";
 					id=121;
 					side="LOGIC";
@@ -1966,9 +1969,9 @@ class Mission
 			id=140;
 			side="EMPTY";
 			vehicle="Land_HelipadSquare_F";
-			text="RespawnIsland";
 			leader=1;
 			skill=1;
+			text="RespawnIsland";
 		};
 		class Item1
 		{
@@ -2324,14 +2327,20 @@ class Mission
 	};
 	class Markers
 	{
-		items=1;
+		items=2;
 		class Item0
 		{
 			position[]={1824.9785,5.5,5644.7881};
 			name="Respawn_West";
-			text="Medical Redeploy";
+			text="Deployment Point";
 			type="mil_pickup";
 			colorName="ColorUNKNOWN";
+		};
+		class Item1
+		{
+			position[]={6.0162544,-118.67423,5639.3193};
+			name="Helipoint";
+			type="Empty";
 		};
 	};
 };
