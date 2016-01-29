@@ -29,6 +29,10 @@ clearItemCargoGlobal heloName;
 // While this countdown is active players can still be added to the respawn Helo. Players that miss the countdown
 // have to wait until the next cycle to be transported in.
 "reinforcementEvent" addPublicVariableEventHandler {
+	if (!isServer) exitWith {
+		diag_log "logistics: non-server triggered reinforcementEvent";
+		false;
+	};
 
 	[] spawn {
 		private "_time";
