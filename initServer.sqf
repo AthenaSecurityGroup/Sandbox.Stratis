@@ -41,7 +41,7 @@ activeGrids = [];
 stdGrid = [];
 trackerActive = false;						// grid tracking on (true) or off (false);
 gridMarkers = false;						// map grid colouring on (true) or off (false);
-trackedPlayers = ["A11","A12","A13"];		// Players to track.
+trackedPlayers = ["A11","A12","A13","A21","A22","A23","A31","A32","A33","A4","B11","B12"];		// Players to track.
 [] spawn {
 	_exitWaitUntil = false;
 	waitUntil {
