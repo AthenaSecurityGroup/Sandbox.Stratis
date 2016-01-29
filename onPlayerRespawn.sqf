@@ -21,9 +21,9 @@ if ((mapGridPosition player) == (mapGridPosition respawnIsland)) then {
 		waitUntil {
 			if (!simulationEnabled (respawnHelo select 0)) exitWith {
 				diag_log format ["onPlayerRespawn: respawnHelo simulation is disabled"];
-				sleep (random 2);
+				sleep (random 3);
 				player moveInCargo (respawnHelo select 0);
-				sleep (random 2);
+				sleep (random 3);
 				[player, (respawnHelo select 0)] remoteExec ["assignAsCargo", 2];
 				// if (!reinforcementEvent) then {
 					reinforcementEvent = true;

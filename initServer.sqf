@@ -122,15 +122,13 @@ clearItemCargoGlobal heloName;
 		_waypoint1 setWaypointStatements ["true","(respawnHelo select 0) land 'GET OUT'; (respawnHelo select 0) AnimateDoor ['Door_rear_source', 1];"];
 		
 		// The helicopter is in flight now so we will wait for it to touch down.
-		_heloFlight = false;
 		waitUntil {
-			if ((getPOS heloName select 2) < 1) then {
-				sleep 1;
+			if ((getPOS (respawnHelo select 0) select 2) <= 1) exitWith {
 				_list = assignedCargo (respawnHelo select 0);
 				{_x action ["Eject", vehicle _x]} forEach _list;
-				_heloFlight = true;
+				true;
 			};
-			_heloFlight;
+			((getPOS (respawnHelo select 0) select 2) <= 1);
 		};
 		sleep 5;
 		// 5 seconds should be enough to kick out all cargo; close the door;
