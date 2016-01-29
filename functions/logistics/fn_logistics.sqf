@@ -35,17 +35,10 @@ clearItemCargoGlobal heloName;
 	};
 
 	[] spawn {
-		private "_time";
-		_time = time + 10;
-
 		diag_log format ["logistics: Reinforcement Event Timer: %1", _time];
 
-		waitUntil { time >= _time };
-
-		diag_log format ["logistics: Time Trigger: %1 >= %2", time, _time];
 		heloName hideObjectGlobal false;
 		heloName enableSimulationGlobal true;
-		sleep 10;
 		{
 			_x hideObjectGlobal false;
 			_x enableSimulationGlobal true;
