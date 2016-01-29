@@ -64,7 +64,7 @@ trackedPlayers = ["A11","A12","A13"];		// Players to track.
 // LOGISTICS - RESPAWN HELO
 // Check the timer, and do what when the timer is up.
 defaultHeloPosition = [14.1171,8180.34];
-reinforcementEvent = false;				
+reinforcementEvent = false;
 publicVariable "reinforcementEvent";
 logisticsRequest = "";
 publicVariable "resupplyEvent";
@@ -120,12 +120,16 @@ clearItemCargoGlobal heloName;
 		_waypoint1 setWayPointType "LOAD";
 		_waypoint1 setWayPointCombatMode "BLUE";
 		_waypoint1 setWaypointStatements ["true","(respawnHelo select 0) land 'GET OUT'; (respawnHelo select 0) AnimateDoor ['Door_rear_source', 1];"];
-		
+
 		// The helicopter is in flight now so we will wait for it to touch down.
 		waitUntil {
 			if ((getPOS (respawnHelo select 0) select 2) <= 1) exitWith {
-				_list = assignedCargo (respawnHelo select 0);
-				{_x action ["Eject", vehicle _x]} forEach _list;
+				diag_log format ["initServer: Helicopter has landed."];
+				{
+					diag_log format ["initServer: player: %1", _x];
+					_x action ["Eject", vehicle _x];
+					unassignVehicle _x;
+				} forEach (assignedCargo (respawnHelo select 0));
 				true;
 			};
 			((getPOS (respawnHelo select 0) select 2) <= 1);
@@ -152,3 +156,5 @@ clearItemCargoGlobal heloName;
 	_requestInfo = _this select 1;
 	[_requestInfo] call ASG_fnc_logisticsRequestReceiver;
 };
+
+// (assignedCargo (respawnHelo select 0)) isEqualTo [];
