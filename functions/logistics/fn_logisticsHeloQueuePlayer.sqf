@@ -30,15 +30,18 @@ _loadInHelo = [_unit, _helo] spawn {
 		!simulationEnabled _helo;
 	};
 
-	diag_log format ["onPlayerRespawn: respawnHelo simulation is disabled"];
-
-	// TODO: loop over this and check that unit is in cargo.
-	[_unit, _helo] remoteExec ["assignAsCargo", 2];
-	_unit moveInCargo _helo;
+	while {!(_unit in _helo)} do
+	{
+		diag_log format ["logisticsHeloQueuePlayer: attempted load in cargo"];
+		[_unit, _helo] remoteExec ["assignAsCargo", 2];
+		_unit moveInCargo _helo;
+		diag_log format ["logisticsHeloQueuePlayer: %1 in helo?: %2", _unit, _unit in _helo];
+	};
+	if (_unit == player) then { cutText ["Queued for transport","BLACK"]; };
 
 	reinforcementEvent = true;
 	publicVariableServer "reinforcementEvent";
-	diag_log format ["onPlayerRespawn: reinforcementEvent has been PV'd"];
+	diag_log format ["logisticsHeloQueuePlayer: reinforcementEvent has been PV'd"];
 };
 
 _fadeIn = [_unit, _helo] spawn {
