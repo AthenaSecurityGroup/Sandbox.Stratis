@@ -54,6 +54,7 @@ class cfgFunctions {
 		};
 		class logistics {
 			class logistics {};
+			class logisticsHeloQueuePlayer {};
 			class logisticsRequestSender {};
 			class logisticsRequestReceiver {};
 			class logisticsResponder {};
@@ -97,16 +98,16 @@ class CfgCommunicationMenu {
 		text = "Radio Control";
         submenu = "#USER:comm_radioControlMenu";
         expression = "";
-        cursor = ""; 
-        enable = "1"; 
+        cursor = "";
+        enable = "1";
         removeAfterExpressionCall = 0;
 	};
 	class baseDeploy {
 		text = "Deployment";
         submenu = "#USER:comm_baseDeployMenu";
         expression = "";
-        cursor = ""; 
-        enable = "1"; 
+        cursor = "";
+        enable = "1";
         removeAfterExpressionCall = 0;
 	};
 	class logistics {
@@ -114,11 +115,11 @@ class CfgCommunicationMenu {
         submenu = "#USER:comm_logisticsMenu";
         expression = "";
         cursor = "";
-        enable = "1"; 
+        enable = "1";
         removeAfterExpressionCall = 0;
 	};
 };
- 
+
 class CfgSounds {
 	sounds[] = {};
 	class radio_start {
