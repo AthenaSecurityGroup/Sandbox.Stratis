@@ -5,7 +5,7 @@
 	Queue unit for reinforcement via logistical helo.
 
 	Parameter(s):
-		0 (Optional): OBJECT - unit to queue for reinforcement (default: player)
+		0: OBJECT - unit to queue for reinforcement
 		1 (Optional): OBJECT - helo unit (default: PV respawnHelo unit reference)
 
 	Returns:
@@ -13,8 +13,10 @@
 */
 private ["_unit", "_helo", "_loadInHelo", "_fadeIn"];
 
-_unit = param [0, player];
-_helo = param [1, respawnHelo select 0];
+_unit = param [0, objNull];
+_helo = param [1, respawnHelo select 0]; // TODO: Remove global variable.
+
+if isNull _unit throw "Invalid Argument: _unit must be valid object";
 
 diag_log format ["logisticsHeloQueuePlayer: _unit = %1, _helo = %2", _unit, _helo];
 
