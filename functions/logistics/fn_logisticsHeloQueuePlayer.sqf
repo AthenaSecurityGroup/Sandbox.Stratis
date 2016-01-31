@@ -23,15 +23,10 @@ diag_log format ["logisticsHeloQueuePlayer: _unit = %1, _helo = %2", _unit, _hel
 [_unit, true] remoteExec ["hideObjectGlobal", 2];
 [_unit, false] remoteExec ["enableSimulationGlobal", 2];
 
-_queueForHelo = [_unit, _helo] spawn {
+_queueForHelo = [_unit] spawn {
 	_unit = _this select 0;
-	_helo = _this select 1;
-	private "_queue";
-
-	_queue = _helo getVariable ["reinforcementQueue", []];
-	_queue = (_queue - [_unit]) + [_unit]; // TODO: use pushBackUnique in 1.55+
-	_helo setVariable ["reinforcementQueue", _queue, true];
-	diag_log format ["logisticsHeloQueuePlayer: _helo.reinforcementQueue = %1", _queue];
+	ASG_logisticsHeloQueue_Add = _unit;
+	publicVariableServer "ASG_logisticsHeloQueue_Add";
 };
 
 _fadeIn = [_unit, _helo] spawn {

@@ -24,21 +24,24 @@ clearMagazineCargoGlobal heloName;
 clearItemCargoGlobal heloName;
 // clearBackpackCargoGlobal heloName;
 
+ASG_logisticsHeloQueue = []; // TODO: Don't use a global.
+
 // A respawning player has entered the respawnHelo, triggering a countdown until reinforcement.
 // While this countdown is active players can still be added to the respawn Helo. Players that miss the countdown
 // have to wait until the next cycle to be transported in.
-[heloName] spawn {
+[heloName, ASG_logisticsHeloQueue] spawn {
 	if !isServer throw "reinforcementEvent should run on the server only";
 
 	_helo = _this select 0;
+	_queue = param [1, []];
 
 	while {alive _helo} do {
 		waitUntil {
 			sleep 5;
-			!(simulationEnabled _helo) && {count (_helo getVariable ["reinforcementQueue", []]) > 0};
+			!(simulationEnabled _helo) && {count _queue > 0};
 		};
 
-		_assigned = [_helo] call ASG_fnc_logisticsHeloProcessQueue;
+		_assigned = [_helo, _queue] call ASG_fnc_logisticsHeloProcessQueue;
 		diag_log format ["logistics: queue processed, %1 on helo", _assigned];
 
 		_helo hideObjectGlobal false;
@@ -81,6 +84,12 @@ clearItemCargoGlobal heloName;
 		_waypoint2 setWayPointCombatMode "BLUE";
 		_waypoint2 setWaypointStatements ["true","(respawnHelo select 0) enableSimulationGlobal false; (respawnHelo select 0) hideObjectGlobal true;"];
 	};
+};
+
+"ASG_logisticsHeloQueue_Add" addPublicVariableEventHandler {
+	_value = param [1, nil];
+	diag_log format ["ASG_logisticsHeloQueue_Add handler running: _value = %1, queue = %2", _value, ASG_logisticsHeloQueue];
+	ASG_logisticsHeloQueue pushBack _value;
 };
 
 // =================================================================
