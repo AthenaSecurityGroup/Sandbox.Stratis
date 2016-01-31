@@ -9,7 +9,6 @@ heloName = (respawnHelo select 0);
 heloGroup = (respawnHelo select 2);
 heloName setVehicleLock "LOCKED";
 heloName allowDamage false;
-sleep 15;
 heloName enableSimulationGlobal false;
 heloName hideObjectGlobal true;
 (driver heloName) allowDamage false;
@@ -62,19 +61,22 @@ reinforcementEvent_handler = objNull;
 		_waypoint1 setWaypointStatements ["true","(respawnHelo select 0) land 'GET OUT'; (respawnHelo select 0) AnimateDoor ['Door_rear_source', 1];"];
 
 		// The helicopter is in flight now so we will wait for it to touch down.
-		waitUntil { getPOS _helo select 2 <= 1 };
+		waitUntil {
+			sleep 0.5;
+			getPOS _helo select 2 <= 0.5;
+		};
 
-		diag_log format ["initServer: Helicopter has landed."];
 		{
-			diag_log format ["initServer: player: %1", _x];
-			//_x action ["Eject", vehicle _x];
+			_x action ["Eject", vehicle _x];
 			unassignVehicle _x;
-		} forEach assignedCargo _helo;
+		} forEach _assigned;
 
-		waitUntil { count assignedCargo _helo == 0 };
+		waitUntil {
+			sleep 3;
+			{_x in _helo} count _assigned == 0;
+		};
 
 		_helo AnimateDoor ['Door_rear_source', 0];
-		sleep 3;
 		// Set waypoint back to simulationKillzone.
 		_waypoint2 = group _helo addWaypoint [defaultHeloPosition, 10];
 		_waypoint2 setWayPointBehaviour "CARELESS";

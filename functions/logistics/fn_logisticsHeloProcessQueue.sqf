@@ -18,13 +18,11 @@ if isNull _helo throw "Invalid Argument: must provide object";
 
 _queue = _helo getVariable ["reinforcementQueue", []];
 
-while {count _queue > 0} do {
+while {_helo emptyPositions "cargo" > 0 && {count _queue > 0}} do {
 	{
 		if (alive _x) then {
-			diag_log format ["logisticsHeloProcessQueue: attempted to load %1 in cargo", _x];
 			[_x, _helo] remoteExec ["assignAsCargo", 2];
 			_x moveInCargo _helo;
-			diag_log format ["logisticsHeloProcessQueue: %1 in helo?: %2", _x, _x in _helo];
 			if (_x in _helo) then {
 				_queue = _queue - [_x];
 				_processed pushBack _x;
