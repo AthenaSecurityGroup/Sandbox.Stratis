@@ -13,7 +13,7 @@
 */
 private ["_helo", "_queue", "_processed"];
 _helo = param [0, objNull, [objNull]];
-_queue = param [1, objNull, [[]];
+_queue = param [1, objNull, [[]]];
 _processed = [];
 
 if isNull _helo throw "Invalid Argument: must provide object";
