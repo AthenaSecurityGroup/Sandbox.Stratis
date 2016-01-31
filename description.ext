@@ -54,6 +54,7 @@ class cfgFunctions {
 		};
 		class logistics {
 			class logistics {};
+			class logisticsHeloProcessQueue {};
 			class logisticsHeloQueuePlayer {};
 			class logisticsRequestSender {};
 			class logisticsRequestReceiver {};

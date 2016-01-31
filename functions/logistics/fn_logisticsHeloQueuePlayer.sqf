@@ -23,23 +23,15 @@ diag_log format ["logisticsHeloQueuePlayer: _unit = %1, _helo = %2", _unit, _hel
 [_unit, true] remoteExec ["hideObjectGlobal", 2];
 [_unit, false] remoteExec ["enableSimulationGlobal", 2];
 
-_loadInHelo = [_unit, _helo] spawn {
+_queueForHelo = [_unit, _helo] spawn {
 	_unit = _this select 0;
 	_helo = _this select 1;
+	private "_queue";
 
-	waitUntil {
-		sleep 0.5;
-		!simulationEnabled _helo;
-	};
-
-	while {!(_unit in _helo)} do
-	{
-		diag_log format ["logisticsHeloQueuePlayer: attempted load in cargo"];
-		[_unit, _helo] remoteExec ["assignAsCargo", 2];
-		_unit moveInCargo _helo;
-		diag_log format ["logisticsHeloQueuePlayer: %1 in helo?: %2", _unit, _unit in _helo];
-	};
-	if (_unit == player) then { cutText ["Queued for transport","BLACK"]; };
+	_queue = _helo getVariable ["reinforcementQueue", []];
+	_queue = (_queue - [_unit]) + [_unit]; // TODO: use pushBackUnique in 1.55+
+	_helo setVariable ["reinforcementQueue", _queue, true];
+	diag_log format ["logisticsHeloQueuePlayer: _helo.reinforcementQueue = %1", _queue];
 
 	reinforcementEvent = true;
 	publicVariableServer "reinforcementEvent";
@@ -51,7 +43,7 @@ _fadeIn = [_unit, _helo] spawn {
 	_helo = _this select 1;
 
 	waitUntil {
-		sleep 4;
+		sleep 2;
 		simulationEnabled _helo && _unit in _helo;
 	};
 
@@ -69,4 +61,4 @@ _fadeIn = [_unit, _helo] spawn {
 	] spawn BIS_fnc_typeText;
 };
 
-[_loadInHelo, _fadeIn];
+[_queueForHelo, _fadeIn];
