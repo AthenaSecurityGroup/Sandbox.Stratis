@@ -32,7 +32,14 @@ showHUD [true,true,true,true,true,true,false,true];
 
 // MOSES' MortarHandler
 player addEventHandler ["HandleDamage",{
-	if (vehicle player isKindOf "StaticWeapon" && {_this select 0 == player && _this select 1 == "" && isNull(_this select 3) && _this select 4 == "" && _this select 5 == -1}) then {
+	if (vehicle player isKindOf "StaticMortar" && {_this select 0 == player && _this select 1 == "" && isNull(_this select 3) && _this select 4 == "" && _this select 5 == -1}) then {
+		if (vehicle player getVariable ["#MOSES#HandleDamage",-1] isEqualTo -1) then {
+			vehicle player setVariable ["#MOSES#HandleDamage",vehicle player addEventHandler ["HandleDamage",{
+				if (_this select 0 == vehicle player && {_this select 1 == "" && isNull(_this select 3) && _this select 4 == "" && _this select 5 == -1}) then {
+					damage vehicle player
+				};
+			}]];
+		};
 		damage player
 	};
 }]
