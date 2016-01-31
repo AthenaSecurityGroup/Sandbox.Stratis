@@ -22,7 +22,7 @@ while {_helo emptyPositions "cargo" > 0 && {count _queue > 0}} do {
 	{
 		if (alive _x) then {
 			[_x, _helo] remoteExec ["assignAsCargo", 2];
-			_x moveInCargo _helo;
+			[_x, _helo] remoteExec ["moveInCargo", 0];
 			if (_x in _helo) then {
 				_queue = _queue - [_x];
 				_processed pushBack _x;
