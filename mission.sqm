@@ -26,19 +26,21 @@ class Mission
 	randomSeed=9755753;
 	class Intel
 	{
-		timeOfChanges=1800.0002;
-		startWeather=0.30000001;
-		startWind=0.1;
-		startWaves=0.1;
-		forecastWeather=0.30000001;
-		forecastWind=0.1;
-		forecastWaves=0.1;
-		forecastLightnings=0.1;
-		year=2035;
-		month=7;
-		day=6;
-		hour=12;
-		minute=0;
+		briefingName="Athena Security Group Sandbox";
+		overviewText="Hardcore tactical realism server.";
+		resistanceWest=0;
+		startWeather=0;
+		startWind=0.099999994;
+		startWaves=0.099999994;
+		forecastWeather=0;
+		forecastWind=0.099999994;
+		forecastWaves=0.099999994;
+		forecastLightnings=0.099999994;
+		year=2020;
+		month=1;
+		day=1;
+		hour=5;
+		minute=45;
 		startFogDecay=0.013;
 		forecastFogDecay=0.013;
 	};
@@ -1077,7 +1079,8 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=1;
-					text="A4B";
+					text="A4A";
+					description="Weapons Team Leader";
 				};
 				class Item4
 				{
@@ -1113,7 +1116,8 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=1;
-					text="A4C";
+					text="A4B";
+					description="Weapons Team Leader";
 				};
 				class Item7
 				{
@@ -1665,7 +1669,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2066.1887,6.73,5600.8931};
+					position[]={2066.2671,6.73,5600.7466};
+					offsetY=50;
 					special="NONE";
 					id=119;
 					side="LOGIC";
@@ -1685,7 +1690,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2067.5081,6.73,5600.8931};
+					position[]={2067.5864,6.73,5600.7466};
+					offsetY=50;
 					special="NONE";
 					id=120;
 					side="LOGIC";
@@ -1705,7 +1711,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2068.8274,6.73,5600.8892};
+					position[]={2068.9058,6.73,5600.7427};
+					offsetY=50;
 					special="NONE";
 					id=121;
 					side="LOGIC";
@@ -1966,9 +1973,9 @@ class Mission
 			id=140;
 			side="EMPTY";
 			vehicle="Land_HelipadSquare_F";
-			text="RespawnIsland";
 			leader=1;
 			skill=1;
+			text="RespawnIsland";
 		};
 		class Item1
 		{
@@ -2324,14 +2331,20 @@ class Mission
 	};
 	class Markers
 	{
-		items=1;
+		items=2;
 		class Item0
 		{
 			position[]={1824.9785,5.5,5644.7881};
 			name="Respawn_West";
-			text="Medical Redeploy";
+			text="Deployment Point";
 			type="mil_pickup";
 			colorName="ColorUNKNOWN";
+		};
+		class Item1
+		{
+			position[]={6.0162544,-118.67423,5639.3193};
+			name="Helipoint";
+			type="Empty";
 		};
 	};
 };

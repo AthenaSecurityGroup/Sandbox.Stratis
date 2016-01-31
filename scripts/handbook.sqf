@@ -49,7 +49,7 @@ These associates are untrained and are battlefield liabilities.
 "]];
 
 player creatediaryrecord ["tiers",["Tier 5","
-Tier five associates are trained private contractors and the bulk of the firm’s fighting power.
+Tier five associates are trained private contractors and are the bulk of the firm’s fighting power.
 <br/><br/>
 Required skills:
 <br/>
@@ -273,7 +273,7 @@ Enlisted leaders at this tier are ranked as sergeants first class, while officer
 "]];
 
 player creatediaryrecord ["tiers",["Tier 0","
-Top tier associates command their company and are responsible for every single failure or achievement within it.
+Top tier associates command their company and are responsible for every failure or achievement within it.
 The senior enlisted leader in a company is ranked as a master sergeant and the senior officer in a company is ranked as a captain.
 "]];
 
@@ -401,10 +401,9 @@ When in the defense, all personnel should be completely covered from enemy advan
 "]];
 
 player creatediaryrecord ["tier3",["Route Selection","
-Squad leaders should direct squad movement without micromanaging team leaders.
 Movement should be directed to be as safe as is practical at all times.
-Always choose the most covered and concealed route to an objective and when contact is likely, ensure that teams bound in short sprints that get from cover to cover as quickly as possible.
-Squad leaders should ensure that subordinate elements are never more than a two second sprint from hard cover.
+Always choose the most covered and concealed route to an objective and when contact is likely, ensure that teams bound in short sprints that move from cover to cover.
+Leaders should ensure that subordinate elements are never more than a two second sprint from hard cover.
 "]];
 
 player creatediarysubject ["tier3a","Specialist Skills"];
@@ -467,6 +466,11 @@ Explain the react to casualty battle drill.
 Explain platoon treatment priority.
 <br/>
 Explain proper placement and usage of casualty collection points.
+"]];
+
+player creatediarysubject ["MOUT","Urban Operations"];
+player creatediaryrecord ["MOUT",["Reserved","
+Reserved.
 "]];
 
 player creatediarysubject ["formations","Formations"];
@@ -619,6 +623,20 @@ Maneuver - Move to attain positional advantage and render the enemy with a disad
 Security - Never permit the enemy to acquire an advantage.
 <br/><br/>
 Simplicity - Prepare simple plans and deliver concise orders to ensure thorough understanding.
+"]];
+
+player creatediaryrecord ["plans",["Mission Flow Tips","
+1. Recieve orders and plan the mission.
+<br/><br/>
+2. Brief subordinates on the mission plan.
+<br/><br/>
+3. Review rules of engagement the three Ds, react to contact, and react to casualty procedures.
+<br/><br/>
+4. Conduct verbal rehearsals of the mission.
+<br/><br/>
+5. Conduct the mission.
+<br/><br/>
+6. Conduct after action review.
 "]];
 
 player creatediarysubject ["drills","Battle Drills"];
@@ -998,8 +1016,26 @@ d. Repeat
 <br/>
 e. Cease Fire
 "]];
-
 player creatediarysubject ["directory","Radio Directory"];
+player creatediaryrecord ["directory",["Radio Use","
+Avoid using the radio for unimportant transmissions.
+<br/><br/>
+Important radio transmissions would include orders to subordinates, 
+changes in status, such as being wounded, low on ammo, or needing a break, 
+and perhaps most importantly, contact reports in the three D format.
+<br/><br/>
+The radio 'ABCs' are the principles of accuracy, brevity, and clarity and should be minded whenever transmitting messages.
+<br/><br/>
+Accuracy - take a moment to think before transmitting.
+<br/><br/>
+Brevity - use the minimum amount of words.
+<br/><br/>
+Clarity - speak loudly and clearly, don't mumble.
+<br/><br/>
+Whenever transmitting long range, announce who you are and who you are trying to reach, in that order, 'me to you' or 'sender to reciever,' then await a response.
+After the reciever has acknowledged your transmission, then send your message.
+"]];
+
 player creatediaryrecord ["directory",["Company Radio Directory","
 Athena One - First platoon.
 <br/>
@@ -1431,33 +1467,20 @@ player creatediaryrecord ["light",["Usage","
 Reserved.
 "]];
 
-player creatediarysubject ["medium","Cavalry Vehicles"];
-player creatediaryrecord ["medium",["Formations","
+player creatediarysubject ["armored","Armored Vehicles"];
+player creatediaryrecord ["armored",["Formations","
 Reserved.
 "]];
 
-player creatediaryrecord ["medium",["Movement","
+player creatediaryrecord ["armored",["Movement","
 Reserved.
 "]];
 
-player creatediaryrecord ["medium",["Usage","
+player creatediaryrecord ["armored",["Usage","
 Reserved.
 "]];
 
-player creatediarysubject ["tanks","Tanks"];
-player creatediaryrecord ["tanks",["Formations","
-Reserved.
-"]];
-
-player creatediaryrecord ["tanks",["Movement","
-Reserved.
-"]];
-
-player creatediaryrecord ["tanks",["Usage","
-Reserved.
-"]];
-
-player creatediarysubject ["helos","Helicopters"];
+player creatediarysubject ["helos","Rotor Aircraft"];
 player creatediaryrecord ["helos",["Formations","
 Reserved.
 "]];
@@ -1470,7 +1493,7 @@ player creatediaryrecord ["helos",["Usage","
 Reserved.
 "]];
 
-player creatediarysubject ["jets","Fixed Wing"];
+player creatediarysubject ["jets","Winged Aircraft"];
 player creatediaryrecord ["jets",["Formations","
 Reserved.
 "]];
@@ -1492,7 +1515,7 @@ Reserved.
 "]];
 
 player creatediarysubject ["terms","Glossary"];
-player creatediaryrecord ["terms",["Acronyms, Terms, and Prowords","
+player creatediaryrecord ["terms",["Acronyms and Terms","
 About, Face – Turn to face the opposite direction of current facing.
 <br/><br/>
 Affirmative - Yes.
@@ -1551,7 +1574,7 @@ Correction – An error has been made, transmission will continue with the last 
 <br/><br/>
 Cover – Objects that shield units.
 <br/><br/>
-Defilade – Impromptu fortification or protective terrain.
+Defilade – Impromtu fortification using protective terrain.
 <br/><br/>
 Disengage – Exit from battle, break contact.
 <br/><br/>
@@ -1560,6 +1583,8 @@ Dismount - Exit from vehicles.
 Element - a general term for a building block of a unit of any size.
 <br/><br/>
 Enemy Down - term meaning the enemy has sustained a casualty. Also, tango down.
+<br/><br/>
+Enfilade - Fire along the long axis of a body of troops.
 <br/><br/>
 Engage – Enter into battle.
 <br/><br/>
@@ -1671,9 +1696,7 @@ Support - Actions or elements meant to assist other forces.
 <br/><br/>
 Suppress – Fire heavily at a specific area, regardless of visual contact with targets.
 <br/><br/>
-Tactical Operations Base (TOB) - a large base from which a regiment operates.
-<br/><br/>
-Tactical Operations Center (TOC) - A physical grouping of staff charged with current operations
+Tactical Operations Center (TOC) - A physical grouping of staff charged with current operations.
 <br/><br/>
 Target reference point (TRP) - an easily recognized feature or object that eases weapon ranging.
 <br/><br/>

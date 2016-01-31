@@ -16,11 +16,16 @@ earPlugIn = false;
 ///// 		Allows players to connect or disconnect from special channels.
 /////
 
-_rcWhitelist = ["A11","A11A","A11B","A12","A12A","A12B","A13","A13A","A13B",
-"A21","A21A","A21B","A22","A22A","A22B","A23","A23A","A23B",
-"A31","A31A","A31B","A32","A32A","A32B","A33","A33A","A33B",
-"PL1","PS1","RO1","CM1","PL2","PS2","RO2","CM2","PL3","PS3","RO3","CM3",
-"RO6","HP1","HP2","HP3","WSL","ASL","OPS","CM6","HQ6","HQ4","HQ5"];
+_rcWhitelist = [
+"A11","A11A","A11B","A12","A12A","A12B","A13","A13A","A13B","A15","A16","A1M","A1R",
+"A21","A21A","A21B","A22","A22A","A22B","A23","A23A","A23B","A25","A26","A2M","A2R",
+"A31","A31A","A31B","A32","A32A","A32B","A33","A33A","A33B","A35","A36","A3M","A3R",
+"A4","A4A","A4B","A5","A6","A6M","A6O","A6R","A7",
+"B11","B11B","B12","B12B","B15","B16","B16R",
+"C11","C12","C13","C21","C22","C23","C31","C32","C33",
+"D11","D12","D13","D21","D22","D23","D31","D32","D33",
+"E2","E3","E4","E5","E6","E7","R3","R5","R6","R7"
+];
 if (toUpper str player in _rcWhiteList) then {
 // Programmatically define each Radio Control submenu entry, based on the existing Radio channels.
 active_backups = [];
