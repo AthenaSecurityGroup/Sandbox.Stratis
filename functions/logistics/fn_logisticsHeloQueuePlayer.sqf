@@ -32,10 +32,6 @@ _queueForHelo = [_unit, _helo] spawn {
 	_queue = (_queue - [_unit]) + [_unit]; // TODO: use pushBackUnique in 1.55+
 	_helo setVariable ["reinforcementQueue", _queue, true];
 	diag_log format ["logisticsHeloQueuePlayer: _helo.reinforcementQueue = %1", _queue];
-
-	reinforcementEvent = true;
-	publicVariableServer "reinforcementEvent";
-	diag_log format ["logisticsHeloQueuePlayer: reinforcementEvent has been PV'd"];
 };
 
 _fadeIn = [_unit, _helo] spawn {

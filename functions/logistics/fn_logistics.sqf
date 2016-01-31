@@ -27,19 +27,15 @@ clearItemCargoGlobal heloName;
 // A respawning player has entered the respawnHelo, triggering a countdown until reinforcement.
 // While this countdown is active players can still be added to the respawn Helo. Players that miss the countdown
 // have to wait until the next cycle to be transported in.
-reinforcementEvent_handler = objNull;
-"reinforcementEvent" addPublicVariableEventHandler {
+[heloName] spawn {
 	if !isServer throw "reinforcementEvent should run on the server only";
 
-	if !(isNull reinforcementEvent_handler) exitWith { diag_log format ["reinforcementEvent: event handler already running"]; };
+	_helo = _this select 0;
 
-	reinforcementEvent_handler = [heloName] spawn {
-		_helo = _this select 0;
-
+	while {alive _helo} do {
 		waitUntil {
 			sleep 5;
-			diag_log format ["logistics: waiting until %1 isn't busy", heloName];
-			!simulationEnabled heloName;
+			!(simulationEnabled _helo) && {count (_helo getVariable ["reinforcementQueue", []]) > 0};
 		};
 
 		_assigned = [_helo] call ASG_fnc_logisticsHeloProcessQueue;
@@ -95,5 +91,3 @@ reinforcementEvent_handler = objNull;
 	_requestInfo = _this select 1;
 	[_requestInfo] call ASG_fnc_logisticsRequestReceiver;
 };
-
-// (assignedCargo (respawnHelo select 0)) isEqualTo [];
