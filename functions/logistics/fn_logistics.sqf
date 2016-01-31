@@ -1,4 +1,4 @@
-defaultHeloPosition = [14.1171,8180.34];
+defaultHeloPosition = getMarkerPos "Helipoint";
 reinforcementEvent = false;
 publicVariable "reinforcementEvent";
 logisticsRequest = "";
