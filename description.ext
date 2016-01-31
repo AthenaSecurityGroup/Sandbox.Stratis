@@ -24,21 +24,24 @@ respawnButton = 0;
 
 class cfgFunctions {
 	class ASG {
-		file = "functions";
 		class loadoutFunctions {
+			file = "functions";
 			class equipPlayer {};
 			class setUniform {};
 		};
 		class radio {
+			file = "functions";
 			class radioControl {};
 		};
 		class gridTrackerSystem {
+			file = "functions";
 			class gridTracker {};
 			class gridResponder {};
 			class gridTerritoryTracker {};
 			class gridGetCent {};
 		};
 		class baseDeployment {
+			file = "functions";
 			class baseEntryCreator {};
 			class baseMenuUpdater {};
 			class baseHandler {};
@@ -50,6 +53,9 @@ class cfgFunctions {
 			class getDefaultBoxAnchor {};
 		};
 		class logistics {
+			class logistics {};
+			class logisticsHeloProcessQueue {};
+			class logisticsHeloQueuePlayer {};
 			class logisticsRequestSender {};
 			class logisticsRequestReceiver {};
 			class logisticsResponder {};
@@ -57,6 +63,7 @@ class cfgFunctions {
 			class logisticsDeliverOffroad {};
 		};
 		class general {
+			file = "functions";
 			class menuDisableEntries {};
 			class createCargoArray {};
 			class cargoArrayAdd {};
@@ -92,16 +99,16 @@ class CfgCommunicationMenu {
 		text = "Radio Control";
         submenu = "#USER:comm_radioControlMenu";
         expression = "";
-        cursor = ""; 
-        enable = "1"; 
+        cursor = "";
+        enable = "1";
         removeAfterExpressionCall = 0;
 	};
 	class baseDeploy {
 		text = "Deployment";
         submenu = "#USER:comm_baseDeployMenu";
         expression = "";
-        cursor = ""; 
-        enable = "1"; 
+        cursor = "";
+        enable = "1";
         removeAfterExpressionCall = 0;
 	};
 	class logistics {
@@ -109,11 +116,11 @@ class CfgCommunicationMenu {
         submenu = "#USER:comm_logisticsMenu";
         expression = "";
         cursor = "";
-        enable = "1"; 
+        enable = "1";
         removeAfterExpressionCall = 0;
 	};
 };
- 
+
 class CfgSounds {
 	sounds[] = {};
 	class radio_start {
