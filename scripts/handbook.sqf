@@ -1454,6 +1454,23 @@ When visual contact is made with an enemy on the move:
 5. Consolidate forces and resume mission.
 "]];
 
+player creatediarysubject ["insertion","Methods of Movement"];
+player creatediaryrecord ["insertion",["Movement on Foot","
+Reserved.
+"]];
+player creatediaryrecord ["insertion",["Movement by Vehicle","
+Reserved.
+"]];
+player creatediaryrecord ["insertion",["Airborne Insertion","
+Reserved.
+"]];
+player creatediaryrecord ["insertion",["Air Assault Insertion","
+Reserved.
+"]];
+player creatediaryrecord ["insertion",["Amphibious Insertion","
+Reserved.
+"]];
+
 player creatediarysubject ["light","Light Vehicles"];
 player creatediaryrecord ["light",["Formations","
 Reserved.
