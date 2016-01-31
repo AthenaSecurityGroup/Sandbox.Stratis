@@ -13,11 +13,10 @@
 */
 private ["_helo", "_queue", "_processed"];
 _helo = param [0, objNull, [objNull]];
-_queue = param [1, objNull, [[]]];
+_queue = param [1, [], [[]]];
 _processed = [];
 
 if isNull _helo throw "Invalid Argument: must provide object";
-if isNull _queue throw "Invalid Argument: must provide array";
 
 while {_helo emptyPositions "cargo" > 0 && count _queue > 0} do {
 	{
