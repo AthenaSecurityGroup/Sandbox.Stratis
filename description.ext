@@ -27,6 +27,7 @@ class cfgFunctions {
 		class loadouts {
 			class equipPlayer {};
 			class loadoutInitBG {};
+			class loadoutInitI {};
 			class loadoutInitO {};
 			class setUniform {};
 		};
@@ -225,6 +226,11 @@ class Extended_Init_Eventhandlers
 	class B_G_Soldier_base_F
 	{
 		init = "[_this select 0] call ASG_fnc_loadoutInitBG";
+	};
+
+	class I_Soldier_base_F
+	{
+		init = "[_this select 0] call ASG_fnc_loadoutInitI";
 	};
 
 	class O_Soldier_base_F
