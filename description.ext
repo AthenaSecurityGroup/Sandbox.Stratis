@@ -213,6 +213,14 @@ class CfgUnitInsignia {
     };
 };
 
+class Extended_Init_Eventhandlers
+{
+	class B_Soldier_base_F
+	{
+		init = "[_this select 0] call ASG_fnc_equipPlayer";
+	};
+};
+
 // OUTLAW MAG REPACK
 #include "scripts\outlw_magRepack\Configs\defines.hpp"
 #include "scripts\outlw_magRepack\Configs\MagRepack_Dialog_Main.hpp"

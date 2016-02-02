@@ -9,9 +9,6 @@ sleep 1;
 // Init cfgCommunicationsMenu Items
 [] execVM "scripts\commMenu_init.sqf";
 
-// Equip Player with ASG Equipment
-[player] call ASG_fnc_equipPlayer;
-
 sleep 1;
 
 // Box Access by MOSES
