@@ -24,8 +24,7 @@ respawnButton = 0;
 
 class cfgFunctions {
 	class ASG {
-		class loadoutFunctions {
-			file = "functions";
+		class loadouts {
 			class equipPlayer {};
 			class setUniform {};
 		};
