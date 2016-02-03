@@ -10,7 +10,7 @@
 	Returns:
 	BOOL - True if successful, false otherwise.
 */
-private ["_obj", "_type", "_side"];
+private ["_obj", "_type"];
 _obj = param [0, objNull, [objNull]];
 
 if isNull _obj throw "Invalid Argument: must provide valid object";
@@ -319,7 +319,7 @@ switch (_type) do {
 		for "_i" from 1 to 8 do {_obj addItemToVest "10Rnd_93x64_DMR_05_Mag";};
 		_obj addWeapon "srifle_DMR_05_tan_f";
 		_obj addPrimaryWeaponItem "optic_LRPS";
-		_obj addPrimaryWeaponItem "bipod_02_F_tan";		
+		_obj addPrimaryWeaponItem "bipod_02_F_tan";
 		_obj addWeapon "hgun_Pistol_heavy_01_F";
 		_obj setunitrank "PRIVATE";
 	};

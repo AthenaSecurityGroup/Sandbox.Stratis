@@ -223,7 +223,7 @@ class Extended_Init_Eventhandlers
 		init = "[_this select 0] call ASG_fnc_equipPlayer";
 	};
 
-	class B_G_Soldier_base_F
+	class I_G_Soldier_base_F
 	{
 		init = "[_this select 0] call ASG_fnc_loadoutInitBG";
 	};

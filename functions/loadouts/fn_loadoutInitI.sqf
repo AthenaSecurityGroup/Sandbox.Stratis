@@ -10,7 +10,7 @@
 	Returns:
 	BOOL - True if successful, false otherwise.
 */
-private ["_obj", "_type", "_side"];
+private ["_obj", "_type"];
 _obj = param [0, objNull, [objNull]];
 
 if isNull _obj throw "Invalid Argument: must provide valid object";
@@ -33,7 +33,7 @@ _obj addHeadgear "H_HelmetIA";
 
 switch (_type) do {
 	//Officer
-	case "I_Officer_F": {
+	case "I_officer_F": {
 		for "_i" from 1 to 8 do {_obj addItemToVest "30Rnd_65x39_caseless_mag";};
 		_obj addWeapon "arifle_MX_Black_F";
 		_obj addPrimaryWeaponItem "optic_Aco";
