@@ -27,7 +27,7 @@ seedBalance = 500000;
 #include "scripts\includes\inc_logisticsIVTable.hpp"
 
 // Spawn position for the logistics helicopter.
-defaultHeloPosition = [8956,27248];
+defaultHeloPosition = getMarkerPos "Helipoint";
 
 // Disconnected Player Body Cleanup
 // Only deletes players body if completely empty.

@@ -19,10 +19,10 @@ heloName hideObjectGlobal true;
 (driver heloName) setCombatMode "Blue";
 group heloName enableAttack false;
 
-clearWeaponCargoGlobal heloName;
-clearMagazineCargoGlobal heloName;
-clearItemCargoGlobal heloName;
-// clearBackpackCargoGlobal heloName;
+clearWeaponCargoGlobal heloName;	
+clearMagazineCargoGlobal heloName;	
+clearItemCargoGlobal heloName;		
+clearBackpackCargoGlobal heloName;	
 
 ASG_logisticsHeloQueue = []; // TODO: Don't use a global.
 
@@ -42,7 +42,7 @@ ASG_logisticsHeloQueue = []; // TODO: Don't use a global.
 		};
 
 		_assigned = [_helo, _queue] call ASG_fnc_logisticsHeloProcessQueue;
-		diag_log format ["logistics: queue processed, %1 on helo", _assigned];
+		diag_log format ["fn_logistics: queue processed, %1 on logistics Huron", _assigned];
 
 		_helo hideObjectGlobal false;
 		_helo enableSimulationGlobal true;
@@ -64,16 +64,21 @@ ASG_logisticsHeloQueue = []; // TODO: Don't use a global.
 			sleep 0.5;
 			getPOS _helo select 2 <= 0.5;
 		};
+		
+		_helo land "NONE";
 
 		{
 			_x action ["Eject", vehicle _x];
 			unassignVehicle _x;
 		} forEach _assigned;
+		
 
 		waitUntil {
-			sleep 3;
+			sleep 10; //o:3
 			{_x in _helo} count _assigned == 0;
 		};
+		
+		diag_log "fn_logistics: Logistics Huron is departing.";
 
 		_helo AnimateDoor ['Door_rear_source', 0];
 		// Set waypoint back to simulationKillzone.

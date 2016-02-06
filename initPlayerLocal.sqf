@@ -42,4 +42,4 @@ player addEventHandler ["HandleDamage",{
 		};
 		damage player
 	};
-}]
+}];

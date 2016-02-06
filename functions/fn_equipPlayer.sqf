@@ -19,7 +19,7 @@ if (side _unit == West) then
 	removeVest _unit;
 	removeBackpack _unit;
 	removeHeadgear _unit;
-	_unit forceAddUniform "U_I_CombatUniform";
+	_unit addUniform "U_BG_Guerrilla_6_1";
 	_unit addVest "V_PlateCarrier1_blk";
 	_unit addHeadgear "H_HelmetB_black";
 	_unit linkItem "ItemMap";
