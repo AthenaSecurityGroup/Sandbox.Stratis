@@ -43,3 +43,11 @@ player addEventHandler ["HandleDamage",{
 		damage player
 	};
 }];
+
+// Watch for ASG Uniform Grab
+player addEventHandler ["Take", {
+	_uniformType = _this select 2;
+	if (_uniformType == "U_BG_Guerrilla_6_1") then {
+		[player] call ASG_fnc_setUniform;
+	};
+}];
