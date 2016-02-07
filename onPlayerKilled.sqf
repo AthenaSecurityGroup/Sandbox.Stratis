@@ -2,6 +2,9 @@ sleep 0.5;	// Lets the server\client catchup, otherwise BIS_revive_incapacitated
 
 if (player getVariable ["BIS_revive_incapacitated", false]) exitWith { true };
 
-cutText ["Awaiting Deployment.","BLACK"];
+cutText ["","BLACK"];
 
-// [[(_this select 0)], "ASG_fnc_setUniform", nil, true, true] call BIS_fnc_MP;					// Set uniform, broadcast to all clients.
+if (simulationEnabled (respawnHelo select 0)) then {
+	[(_this select 0), true] call ASG_fnc_logisticsDeathCamera;
+	cutText ["","BLACK IN", 30];
+};

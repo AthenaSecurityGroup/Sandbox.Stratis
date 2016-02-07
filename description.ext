@@ -61,6 +61,7 @@ class cfgFunctions {
 			class logisticsResponder {};
 			class logisticsFreightHandler {};
 			class logisticsDeliverOffroad {};
+			class logisticsDeathCamera {};
 		};
 		class general {
 			file = "functions";
