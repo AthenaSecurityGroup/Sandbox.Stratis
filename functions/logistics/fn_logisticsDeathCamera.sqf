@@ -3,8 +3,9 @@
 	Author: Thomas Ryan \ Diffusion9
 	
 	Description:
-	Repurposed code from BIS_fnc_establishingShot by Thomas Ryan. Creates an overhead camera with post-process effects.
-	Function has two modes: True (Create the shot), and False (kill the shot).
+		Repurposed code from BIS_fnc_establishingShot by Thomas Ryan.
+		Creates an overhead camera with post-process effects.
+		Function has two modes: True (Create the shot), and False (kill the shot).
 	
 	Paramaters:
 	0:	OBJECT 	- target the camera should orbit.
@@ -16,7 +17,7 @@ private ["_tgt", "_state"];
 _tgt = [_this, 0, objNull, [objNull, []]] call BIS_fnc_param;
 _state = _this select 1;
 
-_txt = "Killed in Action";
+_txt = "You were Killed in Action";
 _alt = 700;
 _rad = 200;
 _ang = random 360;
@@ -152,8 +153,7 @@ if (_state) then {
 		[_time, "font = 'PuristaMedium'"],
 		["", "<br/>"],
 		[_txt, ""],
-		["", "<br/>"],
-		["You must wait to be redeployed", "font = 'PuristaMedium'"]
+		["", "<br/>"]
 	];
 	BIS_fnc_establishingShot_SITREP = [
 		_SITREP,
@@ -161,7 +161,11 @@ if (_state) then {
 		0.015 * safeZoneH + safeZoneY,
 		false,
 		"<t align = 'left' size = '1.0' font = 'PuristaLight'>%1</t>"
-	] spawn BIS_fnc_typeText2;	
+	] spawn BIS_fnc_typeText2;
+	
+	sleep 12;
+	["<t size = '.6' font = 'PuristaLight'>The logistics helicopter is currently tasked with another mission<br/>You will reinforce when it is available</t>",-1,-1,10,4,0,789] spawn BIS_fnc_dynamicText;	
+
 } else {
 	/// DESTROY
 	("BIS_layerStatic" call BIS_fnc_rscLayer) cutRsc ["RscStatic", "PLAIN"];
