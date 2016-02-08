@@ -65,6 +65,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A11";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -77,6 +78,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A11A";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -88,6 +90,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A113";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -99,6 +102,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A114";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -111,6 +115,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A11B";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -122,6 +127,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A116";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -133,6 +139,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A117";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -154,6 +161,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A12";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -166,6 +174,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A12A";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -177,6 +186,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A123";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -188,6 +198,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A124";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -200,6 +211,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A12B";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -211,6 +223,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A126";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -222,6 +235,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A127";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -243,6 +257,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A13";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -255,6 +270,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A13A";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -266,6 +282,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A133";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -277,6 +294,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A134";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -289,6 +307,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A13B";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -300,6 +319,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A136";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -311,6 +331,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A137";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -332,6 +353,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A21";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -344,6 +366,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A21A";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -355,6 +378,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A213";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -366,6 +390,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A214";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -378,6 +403,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A21B";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -389,6 +415,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A216";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -400,6 +427,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A217";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -421,6 +449,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A22";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -433,6 +462,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A22A";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -444,6 +474,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A223";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -455,6 +486,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A224";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -467,6 +499,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A22B";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -478,6 +511,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A226";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -489,6 +523,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A227";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -510,6 +545,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A23";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -522,6 +558,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A23A";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -533,6 +570,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A233";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -544,6 +582,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A234";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -556,6 +595,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A23B";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -567,6 +607,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A236";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -578,6 +619,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A237";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -599,6 +641,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A31";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -611,6 +654,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A31A";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -622,6 +666,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A313";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -633,6 +678,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A314";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -645,6 +691,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A31B";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -656,6 +703,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A316";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -667,6 +715,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A317";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -688,6 +737,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A32";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -700,6 +750,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A32A";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -711,6 +762,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A323";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -722,6 +774,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A324";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -734,6 +787,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A32B";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -745,6 +799,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A326";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -756,6 +811,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A327";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -777,6 +833,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A33";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -789,6 +846,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A33A";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -800,6 +858,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A333";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -811,6 +870,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A334";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -823,6 +883,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A33B";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -834,6 +895,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A336";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -845,6 +907,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A337";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -866,6 +929,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="A16";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Platoon Leader";
 				};
 				class Item1
@@ -879,6 +943,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A15";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Platoon Sergeant";
 				};
 				class Item2
@@ -891,6 +956,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A1R";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Radio Operator";
 				};
 				class Item3
@@ -903,6 +969,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A1M";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Combat Medic";
 				};
 			};
@@ -925,6 +992,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="A26";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Platoon Leader";
 				};
 				class Item1
@@ -938,6 +1006,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A25";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Platoon Sergeant";
 				};
 				class Item2
@@ -950,6 +1019,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A2R";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Radio Operator";
 				};
 				class Item3
@@ -962,6 +1032,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A2M";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Combat Medic";
 				};
 			};
@@ -984,6 +1055,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="A36";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Platoon Leader";
 				};
 				class Item1
@@ -997,6 +1069,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A35";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Platoon Sergeant";
 				};
 				class Item2
@@ -1009,6 +1082,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A3R";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Radio Operator";
 				};
 				class Item3
@@ -1021,6 +1095,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A3M";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Combat Medic";
 				};
 			};
@@ -1043,6 +1118,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A4";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Weapons Squad Leader";
 				};
 				class Item1
@@ -1055,6 +1131,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A44";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Assistant Gunner";
 				};
 				class Item2
@@ -1067,6 +1144,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A45";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Gunner";
 				};
 				class Item3
@@ -1080,6 +1158,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A4A";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Weapons Team Leader";
 				};
 				class Item4
@@ -1092,6 +1171,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A46";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Assistant Gunner";
 				};
 				class Item5
@@ -1104,6 +1184,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A47";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Gunner";
 				};
 				class Item6
@@ -1117,6 +1198,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="A4B";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Weapons Team Leader";
 				};
 				class Item7
@@ -1129,6 +1211,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A48";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Assistant Gunner";
 				};
 				class Item8
@@ -1141,6 +1224,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="A49";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Gunner";
 				};
 			};
@@ -1163,6 +1247,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=1;
 					text="A6";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Company Commander";
 				};
 				class Item1
@@ -1176,6 +1261,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="A7";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Company Executive Officer";
 				};
 				class Item2
@@ -1189,6 +1275,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A5";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Company Master Sergeant";
 				};
 				class Item3
@@ -1202,6 +1289,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A6O";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Company Operations Sergeant";
 				};
 				class Item4
@@ -1215,6 +1303,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A6R";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Senior Radio Operator";
 				};
 				class Item5
@@ -1228,6 +1317,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="A6M";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Senior Combat Medic";
 				};
 			};
@@ -1250,6 +1340,7 @@ class Mission
 					rank="MAJOR";
 					skill=1;
 					text="E6";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Battalion Commander";
 				};
 				class Item1
@@ -1263,6 +1354,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=1;
 					text="E7";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Battalion Executive Officer";
 				};
 				class Item2
@@ -1276,6 +1368,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="E5";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Battalion First Sergeant";
 				};
 				class Item3
@@ -1289,6 +1382,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="E2";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Battalion Intelligence Officer";
 				};
 				class Item4
@@ -1302,6 +1396,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="E3";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Battalion Operations Officer";
 				};
 				class Item5
@@ -1315,6 +1410,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="E4";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Battalion Logistics Officer";
 				};
 			};
@@ -1337,6 +1433,7 @@ class Mission
 					rank="COLONEL";
 					skill=1;
 					text="R6";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Regimental Commander";
 				};
 				class Item1
@@ -1350,6 +1447,7 @@ class Mission
 					rank="MAJOR";
 					skill=1;
 					text="R7";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Regimental Executive Officer";
 				};
 				class Item2
@@ -1363,6 +1461,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=1;
 					text="R3";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Regimental Operations Officer";
 				};
 				class Item3
@@ -1376,6 +1475,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="R5";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Regimental Sergeant Major";
 				};
 			};
@@ -1398,6 +1498,7 @@ class Mission
 					rank="MAJOR";
 					skill=1;
 					text="C11";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -1410,6 +1511,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="C12";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -1422,6 +1524,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="C13";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -1434,6 +1537,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=1;
 					text="C21";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -1446,6 +1550,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="C22";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -1458,6 +1563,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="C23";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -1470,6 +1576,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=1;
 					text="C31";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item7
 				{
@@ -1482,6 +1589,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="C32";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item8
 				{
@@ -1494,6 +1602,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="C33";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -1515,6 +1624,7 @@ class Mission
 					rank="MAJOR";
 					skill=1;
 					text="D11";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item1
 				{
@@ -1527,6 +1637,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="D12";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -1539,6 +1650,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="D13";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -1551,6 +1663,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=1;
 					text="D21";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -1563,6 +1676,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="D22";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -1575,6 +1689,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="D23";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item6
 				{
@@ -1587,6 +1702,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=1;
 					text="D31";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item7
 				{
@@ -1599,6 +1715,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="D32";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item8
 				{
@@ -1611,6 +1728,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="D33";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -1742,6 +1860,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="B11";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Section Leader";
 				};
 				class Item1
@@ -1754,6 +1873,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B113";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -1765,6 +1885,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B114";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -1777,6 +1898,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="B11B";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Assistant Section Leader";
 				};
 				class Item4
@@ -1789,6 +1911,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B115";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -1800,6 +1923,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B116";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -1821,6 +1945,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="B12";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Section Leader";
 				};
 				class Item1
@@ -1833,6 +1958,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B123";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item2
 				{
@@ -1844,6 +1970,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B124";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item3
 				{
@@ -1856,6 +1983,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="B12B";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Assistant Section Leader";
 				};
 				class Item4
@@ -1868,6 +1996,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B125";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -1879,6 +2008,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B126";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};
@@ -1900,6 +2030,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="B16";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Platoon Leader";
 				};
 				class Item1
@@ -1913,6 +2044,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="B15";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Platoon Sergeant";
 				};
 				class Item2
@@ -1925,6 +2057,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B1R";
+					init="[this] call ASG_fnc_equipPlayer";
 					description="Radio Operator";
 				};
 				class Item3
@@ -1937,6 +2070,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B164";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item4
 				{
@@ -1948,6 +2082,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B165";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 				class Item5
 				{
@@ -1959,6 +2094,7 @@ class Mission
 					player="PLAY CDG";
 					skill=1;
 					text="B166";
+					init="[this] call ASG_fnc_equipPlayer";
 				};
 			};
 		};

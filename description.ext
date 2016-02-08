@@ -221,11 +221,6 @@ class CfgUnitInsignia {
 
 class Extended_Init_Eventhandlers
 {
-	class B_Soldier_base_F
-	{
-		init = "[_this select 0] call ASG_fnc_equipPlayer";
-	};
-
 	class I_G_Soldier_base_F
 	{
 		init = "[_this select 0] call ASG_fnc_loadoutInitBG";
