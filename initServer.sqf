@@ -11,7 +11,7 @@ showSubtitles false;
 showHUD [true,true,true,true,true,true,false,true];
 
 // Dynamic Groups for Server
-["Initialize", [true]] call BIS_fnc_dynamicGroups;
+["Initialize", [true]] call ASG_fnc_dynamicGroups;
 
 // Initialize Bank Account Data
 bankBalance = profileNamespace getVariable ["#ASG_BankBalance",seedBalance];

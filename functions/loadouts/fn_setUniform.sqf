@@ -9,3 +9,4 @@ private ["_unit"];
 
 _unit = _this select 0;
 _unit setObjectTextureGlobal [0,"textures\uniform\uniform.paa"];
+_unit setObjectMaterialGlobal [0, "a3\characters_f_beta\indep\data\ia_soldier_01_clothing.rvmat"];

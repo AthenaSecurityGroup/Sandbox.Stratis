@@ -42,7 +42,7 @@ if (isNil {_landingZone}) exitWith {
 	publicVariable "comm_logisticsMenu";
 };
 
-format ["Resupply en route to the %1", _baseName] remoteExec ["hint", _playerID];
+format ["Resupply requested to the %1", _baseName] remoteExec ["hint", _playerID];
 
 waitUntil {
 	if (!simulationEnabled heloName) exitWith {

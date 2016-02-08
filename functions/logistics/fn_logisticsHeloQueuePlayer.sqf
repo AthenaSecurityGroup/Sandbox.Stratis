@@ -39,17 +39,55 @@ _fadeIn = [_unit, _helo] spawn {
 	};
 
 	cutText ["","BLACK IN", 30];
+	[_unit, false] call ASG_fnc_logisticsDeathCamera;
 	// Get the player's real (not in-game) rank via Insignia display name;
-	_rankName = format ["%1 %2", getText ((missionconfigfile >> "CfgUnitInsignia" >> (_unit call BIS_fnc_getUnitInsignia)) select 0), name _unit];
-	_groupName = format ["Reinforcing %1", group _unit];
-	_respawnText = format ["Northern %1", worldName];
+	_rankName = format ["%1 %2", getText ((missionconfigfile >> "CfgUnitInsignia" >> (player call BIS_fnc_getUnitInsignia)) select 0), name player];
+	_respawnText = format ["%1, %2", (getPos respawnIsland) call BIS_fnc_locationDescription, worldName];
+
 	[
+		[_rankName, "font = 'PuristaMedium'"], ["", "<br/>"],
+		[_respawnText,"size = '0.6'"]
+	] spawn {
+		private ["_text"];
+		_text = _this;
+		
+		// Compile date
+		private ["_month", "_day", "_hour", "_minute"];
+		_month = str (date select 1);
+		_day = str (date select 2);
+		_hour = str (date select 3);
+		_minute = str (date select 4);
+		
+		if (date select 1 < 10) then {_month = format ["0%1", str (date select 1)]};
+		if (date select 2 < 10) then {_day = format ["0%1", str (date select 2)]};
+		if (date select 3 < 10) then {_hour = format ["0%1", str (date select 3)]};
+		if (date select 4 < 10) then {_minute = format ["0%1", str (date select 4)]};
+		
+		private ["_time", "_date"];
+		_time = format ["%1:%2", _hour, _minute];
+		_date = format ["%1-%2-%3", str (date select 0), _month, _day];
+		
+		// Compile SITREP
+		private ["_SITREP"];
+		_SITREP = [
+			[_date + " ", ""],
+			[_time, "font = 'PuristaMedium'"]
+		];
+		
+		if (count _text > 0) then {
+			_SITREP = _SITREP + [["", "<br/>"]];
+			{_SITREP = _SITREP + [_x]} forEach _text;
+		};
+		
+		// Display SITREP
 		[
-			[_rankName, "<t align = 'center' shadow = '1' size = '1.1' font='PuristaBold'>%1</t><br/>", 10],
-			[_groupName, "<t align = 'center' shadow = '1' size = '0.7'>%1</t><br/>", 5],
-			[_respawnText, "<t align = 'center' shadow = '1' size = '0.5'>%1</t>", 50]
-		]
-	] spawn BIS_fnc_typeText;
+			_SITREP,
+			safeZoneX - 0.01,
+			safeZoneY + (1 - 0.125) * safeZoneH,
+			true,
+			"<t align = 'right' size = '1.0' font = 'PuristaLight'>%1</t>"
+		] spawn BIS_fnc_typeText2;
+	};
 };
 
 [_queueForHelo, _fadeIn];

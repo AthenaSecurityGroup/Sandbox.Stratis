@@ -2,7 +2,8 @@
 [player] call ASG_fnc_playerSpawn;
 
 // Dynamic Groups, registers the player group
-["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
+#include "scripts\includes\inc_playerSpawnGroups.hpp"
+["InitializePlayer", [player, true]] call ASG_fnc_dynamicGroups;
 
 sleep 1;
 
@@ -39,4 +40,12 @@ player addEventHandler ["HandleDamage",{
 		};
 		damage player
 	};
-}]
+}];
+
+// Watch for ASG Uniform Grab
+player addEventHandler ["Take", {
+	_uniformType = _this select 2;
+	if (_uniformType == "U_BG_Guerrilla_6_1") then {
+		[player] call ASG_fnc_setUniform;
+	};
+}];

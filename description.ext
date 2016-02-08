@@ -1,6 +1,6 @@
 onLoadName = "Athena Security Group";
 onLoadMission = "Support the server at AthenaSecurityGroup.com, or visit our reddit at /r/AthenaSecurityGroup.";
-author = "Diffusion9 and MosesUK";
+author = "Diffusion9, jmlane, and MosesUK";
 disabledAI=1;
 disableChannels[]={0,1,2,4,6};
 debriefing=1;
@@ -64,12 +64,14 @@ class cfgFunctions {
 			class logisticsResponder {};
 			class logisticsFreightHandler {};
 			class logisticsDeliverOffroad {};
+			class logisticsDeathCamera {};
 		};
 		class general {
 			file = "functions";
 			class menuDisableEntries {};
 			class createCargoArray {};
 			class cargoArrayAdd {};
+			class dynamicGroups {};
 		};
 	};
 	class KK {
