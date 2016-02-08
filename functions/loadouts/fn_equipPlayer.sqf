@@ -8,14 +8,13 @@
 		0: OBJECT - local unit to regear.
 
 	Returns:
-	Undefined
+	BOOLEAN - Whether gear changes were applied.
 */
 private ["_unit", "_type"];
 
 _unit = param [0, objNull, [objNull]];
 
-if isNull _unit throw "Invalid Argument: unit must be a valid object";
-if !local _unit throw "Invalid Argument: unit must be a local object";
+if (isNull _unit) throw "Invalid Argument: unit must be a valid object";
 
 _type = typeof _unit;
 
@@ -50,7 +49,9 @@ switch (_type) do {
 	default {};
 };
 
-[[_unit], "ASG_fnc_setUniform", true, true] call BIS_fnc_MP;					// Set uniform, broadcast to all clients.
+[_unit] call ASG_fnc_setUniform;
 _rankIndex = [rankAssignments, (str _unit)] call KK_fnc_findAll select 0 select 0;
 _rankStr = ([rankAssignments, [_rankIndex]] call KK_fnc_findAllGetPath) select 0;
-[[_unit, _rankStr], "BIS_fnc_setUnitInsignia", true, true] call BIS_fnc_MP;	// Broadcast Insignia to clients.
+[_unit, _rankStr] call BIS_fnc_setUnitInsignia;
+
+true;
