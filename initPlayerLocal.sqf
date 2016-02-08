@@ -5,12 +5,6 @@
 #include "scripts\includes\inc_playerSpawnGroups.hpp"
 ["InitializePlayer", [player, true]] call ASG_fnc_dynamicGroups;
 
-if (isServer) then {
-	if (isNil {([playerSpawnGroups, (str player)] call KK_fnc_findAll select 0)}) exitWith {true};
-	_squadPath = ([playerSpawnGroups, (str leader group (_this select 0))] call KK_fnc_findAll select 0); _squadPath set [1,1]; _squadName = [playerSpawnGroups, (_squadPath)] call KK_fnc_findAllGetPath;
-	["SetName", [(group player), _squadName]] call ASG_fnc_dynamicGroups;
-};
-
 sleep 1;
 
 // Init cfgCommunicationsMenu Items
