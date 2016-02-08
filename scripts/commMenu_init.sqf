@@ -75,7 +75,9 @@ comm_addRadioControl = [player,"radioControl",nil,nil,""] call BIS_fnc_addCommMe
 };
 
 // Add the commMenu item to the player.
-comm_addBaseDeployment = [player,"baseDeploy",nil,nil,""] call BIS_fnc_addCommMenuItem;
+if (!isNil {comm_baseDeployMenu}) then {
+	comm_addBaseDeployment = [player,"baseDeploy",nil,nil,""] call BIS_fnc_addCommMenuItem;
+};
 
 /////
 //////////////////////////////////////////////////////////////////////////////////////////////////////

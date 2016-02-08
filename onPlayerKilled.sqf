@@ -8,3 +8,5 @@ if (simulationEnabled (respawnHelo select 0)) then {
 	[(_this select 0), true] call ASG_fnc_logisticsDeathCamera;
 	cutText ["","BLACK IN", 30];
 };
+
+[player] call ASG_fn_setUniform;

@@ -4,8 +4,10 @@
 // Dynamic Groups, registers the player group
 #include "scripts\includes\inc_playerSpawnGroups.hpp"
 ["InitializePlayer", [player, true]] call ASG_fnc_dynamicGroups;
-if (isServer && (player == leader group player)) then {
-	_squadPath = ([playerSpawnGroups, (str leader group player)] call KK_fnc_findAll select 0); _squadPath set [1,1]; _squadName = [playerSpawnGroups, (_squadPath)] call KK_fnc_findAllGetPath;
+
+if (isServer) then {
+	if (isNil {([playerSpawnGroups, (str player)] call KK_fnc_findAll select 0)}) exitWith {true};
+	_squadPath = ([playerSpawnGroups, (str leader group (_this select 0))] call KK_fnc_findAll select 0); _squadPath set [1,1]; _squadName = [playerSpawnGroups, (_squadPath)] call KK_fnc_findAllGetPath;
 	["SetName", [(group player), _squadName]] call ASG_fnc_dynamicGroups;
 };
 
