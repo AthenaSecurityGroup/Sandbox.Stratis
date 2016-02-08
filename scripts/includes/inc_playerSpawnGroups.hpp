@@ -1,0 +1,23 @@
+playerSpawnGroups = [
+    ["A11", "Alpha 1-1"],
+    ["A12", "Alpha 1-2"],
+    ["A13", "Alpha 1-3"],
+    ["A16", "Alpha 1"],
+    ["A21", "Alpha 2-1"],
+    ["A22", "Alpha 2-2"],
+    ["A23", "Alpha 2-3"],
+    ["A26", "Alpha 2"],
+    ["A31", "Alpha 3-1"],
+    ["A32", "Alpha 3-2"],
+    ["A33", "Alpha 3-3"],
+    ["A36", "Alpha 3"],
+    ["A4", "Alpha 4"],
+    ["A6", "Alpha 6"],
+    ["B11", "Auxiliary 1-1"],
+    ["B12", "Auxiliary 1-2"],
+    ["B16", "Auxiliary 1"],
+    ["C11", "Rotor Wing"],
+    ["D11", "Fixed Wing"],
+    ["E6", "Battalion"],
+    ["R6", "Regiment"]
+];

@@ -18,7 +18,7 @@ _tgt = [_this, 0, objNull, [objNull, []]] call BIS_fnc_param;
 _state = _this select 1;
 
 _txt = "You were Killed in Action";
-_alt = 700;
+_alt = 300;
 _rad = 200;
 _ang = random 360;
 _dir = round random 1;
@@ -164,7 +164,7 @@ if (_state) then {
 	] spawn BIS_fnc_typeText2;
 	
 	sleep 12;
-	["<t size = '.6' font = 'PuristaLight'>The logistics helicopter is currently tasked with another mission<br/>You will reinforce when it is available</t>",-1,-1,10,4,0,789] spawn BIS_fnc_dynamicText;	
+	["<t size = '1' font = 'PuristaMedium'>Awaiting Deployment<br/></t><t size = '.6' font = 'PuristaLight'>The logistics helicopter is currently tasked with another mission<br/>You will be deployed when it is available</t>",-1,-1,30,6,0,789] spawn BIS_fnc_dynamicText;	
 
 } else {
 	/// DESTROY
@@ -181,10 +181,6 @@ if (_state) then {
 	// Delete sound logics and group
 	{if (!(isNil _x)) then {deleteVehicle (missionNamespace getVariable _x)}} forEach ["BIS_fnc_establishingShot_logic1", "BIS_fnc_establishingShot_logic2", "BIS_fnc_establishingShot_logic3"];
 	if (!(isNil "BIS_fnc_establishingShot_logic_group")) then {deleteGroup BIS_fnc_establishingShot_logic_group};
-
-	// Remove HUD
-	optionsMenuOpened = nil;
-	optionsMenuClosed = nil;
 
 	if (!(isNil "_drawEH")) then {
 		removeMissionEventHandler ["Draw3D", _drawEH];
@@ -213,11 +209,6 @@ if (_state) then {
 			ppEffectDestroy ppGrain;
 	};
 
-	// Clear existing global variables
-	BIS_fnc_establishingShot_icons = nil;
-	BIS_fnc_establishingShot_spaceEH = nil;
-	BIS_fnc_establishingShot_skip = nil;
-	BIS_fnc_establishingShot_UAVDone = nil;
+	enableEnvironment true;
 
-	enableEnvironment true;	
 };
