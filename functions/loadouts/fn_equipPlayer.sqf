@@ -50,7 +50,7 @@ switch (_type) do {
 	default {};
 };
 
-[[player], "ASG_fnc_setUniform", nil, true, true] call BIS_fnc_MP;					// Set uniform, broadcast to all clients.
+[[_unit], "ASG_fnc_setUniform", true, true] call BIS_fnc_MP;					// Set uniform, broadcast to all clients.
 _rankIndex = [rankAssignments, (str _unit)] call KK_fnc_findAll select 0 select 0;
 _rankStr = ([rankAssignments, [_rankIndex]] call KK_fnc_findAllGetPath) select 0;
-[[player, _rankStr], "BIS_fnc_setUnitInsignia", nil, true, true] call BIS_fnc_MP;	// Broadcast Insignia to clients.
+[[_unit, _rankStr], "BIS_fnc_setUnitInsignia", true, true] call BIS_fnc_MP;	// Broadcast Insignia to clients.
