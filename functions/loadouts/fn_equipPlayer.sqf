@@ -49,6 +49,14 @@ switch (_type) do {
 	default {};
 };
 
+
+if (hasInterface) then {
+	waitUntil {
+		diag_log format ["!!!!ASG_fnc_equipPlayer: UNTERMINATED waitUntil !!!!"];
+		owner _unit != 0;
+	};
+};
+
 [_unit] call ASG_fnc_setUniform;
 _rankHash = [] call ASG_fnc_getRankHash;
 _rankIndex = [_rankHash, (str _unit)] call KK_fnc_findAll select 0 select 0;
