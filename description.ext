@@ -24,9 +24,12 @@ respawnButton = 0;
 
 class cfgFunctions {
 	class ASG {
-		class loadoutFunctions {
-			file = "functions";
+		class loadouts {
 			class equipPlayer {};
+			class loadoutInitBG {};
+			class loadoutInitC {};
+			class loadoutInitI {};
+			class loadoutInitO {};
 			class setUniform {};
 		};
 		class radio {
@@ -64,11 +67,11 @@ class cfgFunctions {
 			class logisticsDeathCamera {};
 		};
 		class general {
-			file = "functions";
-			class menuDisableEntries {};
-			class createCargoArray {};
 			class cargoArrayAdd {};
+			class createCargoArray {};
 			class dynamicGroups {};
+			class getRankHash {};
+			class menuDisableEntries {};
 		};
 	};
 	class KK {
@@ -214,6 +217,29 @@ class CfgUnitInsignia {
         displayName = "Private";
         texture = "textures\insig\pvt.paa";
     };
+};
+
+class Extended_Init_Eventhandlers
+{
+	class I_G_Soldier_base_F
+	{
+		init = "[_this select 0] call ASG_fnc_loadoutInitBG";
+	};
+
+	class Civilian_F
+	{
+		init = "[_this select 0] call ASG_fnc_loadoutInitC";
+	};
+
+	class I_Soldier_base_F
+	{
+		init = "[_this select 0] call ASG_fnc_loadoutInitI";
+	};
+
+	class O_Soldier_base_F
+	{
+		init = "[_this select 0] call ASG_fnc_loadoutInitO";
+	};
 };
 
 // OUTLAW MAG REPACK
