@@ -67,11 +67,10 @@ class cfgFunctions {
 			class logisticsDeathCamera {};
 		};
 		class general {
-			file = "functions";
-			class menuDisableEntries {};
-			class createCargoArray {};
 			class cargoArrayAdd {};
+			class createCargoArray {};
 			class dynamicGroups {};
+			class menuDisableEntries {};
 		};
 	};
 	class KK {
