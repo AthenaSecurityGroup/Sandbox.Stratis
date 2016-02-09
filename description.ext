@@ -70,6 +70,7 @@ class cfgFunctions {
 			class cargoArrayAdd {};
 			class createCargoArray {};
 			class dynamicGroups {};
+			class getRankHash {};
 			class menuDisableEntries {};
 		};
 	};

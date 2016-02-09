@@ -10,7 +10,7 @@
 	Returns:
 	BOOLEAN - Whether gear changes were applied.
 */
-private ["_unit", "_type"];
+private ["_unit", "_type", "_rankHash", "_rankIndex", "_rankStr"];
 
 _unit = param [0, objNull, [objNull]];
 
@@ -50,8 +50,9 @@ switch (_type) do {
 };
 
 [_unit] call ASG_fnc_setUniform;
-_rankIndex = [rankAssignments, (str _unit)] call KK_fnc_findAll select 0 select 0;
-_rankStr = ([rankAssignments, [_rankIndex]] call KK_fnc_findAllGetPath) select 0;
+_rankHash = [] call ASG_fnc_getRankHash;
+_rankIndex = [_rankHash, (str _unit)] call KK_fnc_findAll select 0 select 0;
+_rankStr = ([_rankHash, [_rankIndex]] call KK_fnc_findAllGetPath) select 0;
 [_unit, _rankStr] call BIS_fnc_setUnitInsignia;
 
 true;

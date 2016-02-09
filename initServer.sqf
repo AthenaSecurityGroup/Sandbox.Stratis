@@ -25,9 +25,6 @@ publicVariable "baseComps";
 // Player Spawn Table
 #include "scripts\includes\inc_playerSpawnTable.hpp"
 publicVariable "playerSpawnTable";
-// Player Spawn Table
-#include "scripts\includes\inc_rankAssignments.hpp"
-publicVariable "rankAssignments";
 // Base Deployment Follow Terrain
 baseFollowTerrain = true;
 publicVariable "baseFollowTerrain";
