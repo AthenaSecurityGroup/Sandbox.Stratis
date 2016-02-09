@@ -1,10 +1,4 @@
-if (player getVariable ["BIS_revive_incapacitated", false]) exitWith {
-	[[player], "ASG_fnc_setUniform", nil, true, true] call BIS_fnc_MP;
-	true;
-};
-
-// Equip Player with ASG Equipment
-[player] call ASG_fnc_equipPlayer;
+if (player getVariable ["BIS_revive_incapacitated", false]) exitWith {true};
 
 // Re-initialize Box Access by MOSES
 [player] execVM "scripts\sand_lockBoxes.sqf";
