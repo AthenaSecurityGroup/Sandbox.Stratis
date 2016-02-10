@@ -13,7 +13,8 @@
 private ["_obj", "_type"];
 _obj = param [0, objNull, [objNull]];
 
-if isNull _obj throw "Invalid Argument: must provide valid object";
+if (isNull _obj) throw "Invalid Argument: must provide valid object";
+if (_obj in playableUnits) exitWith {false};
 
 _type = typeof _obj;
 
@@ -37,7 +38,7 @@ switch (_type) do {
 
 	// Militia Squad Leader
 	case "B_G_Soldier_SL_F": {
-		_obj forceAddUniform " U_BG_Guerilla3_1";
+		_obj forceAddUniform "U_BG_Guerilla3_1";
 		for "_i" from 1 to 8 do { _obj addItemToVest "20Rnd_762x51_Mag"; };
 		_obj addWeapon "srifle_DMR_06_olive_F";
 		_obj setunitrank "SERGEANT";
@@ -53,7 +54,7 @@ switch (_type) do {
 
 	// Militia Rifleman
 	case "B_G_Soldier_F": {
-		_obj forceAddUniform " U_BG_Guerilla2_1 ";
+		_obj forceAddUniform "U_BG_Guerilla2_1";
 		for "_i" from 1 to 8 do { _obj addItemToVest "20Rnd_762x51_Mag"; };
 		_obj addWeapon "srifle_DMR_06_olive_F";
 		_obj setunitrank "PRIVATE";
@@ -61,7 +62,7 @@ switch (_type) do {
 
 	// Militia Autorifleman
 	case "B_G_Soldier_AR_F": {
-		_obj forceAddUniform " U_BG_Guerilla2_2";
+		_obj forceAddUniform "U_BG_Guerilla2_2";
 		for "_i" from 1 to 2 do { _obj addItemToVest "150Rnd_762x54_Box"; };
 		_obj addWeapon "LMG_Zafir_F";
 		_obj setunitrank "PRIVATE";
