@@ -45,7 +45,7 @@ switch (_type) do {
 		for "_i" from 1 to 8 do {_obj addItemToVest "30Rnd_65x39_caseless_mag_Tracer";};
 		for "_i" from 1 to 2 do {_obj addItemToVest "HandGrenade";};
 		_obj addWeapon "arifle_MX_F";
-		_obj addPrimaryWeaponItem "optic_Arco";
+		_obj addPrimaryWeaponItem "optic_Holosight";
 		_obj setunitrank "SERGEANT";
 	};
 
@@ -56,6 +56,24 @@ switch (_type) do {
 		_obj addWeapon "arifle_MX_F";
 		_obj addPrimaryWeaponItem "optic_Holosight";
 		_obj setunitrank "CORPORAL";
+	};
+
+	//Marksman/Sharpshooter
+	case "O_soldier_M_F": {
+		for "_i" from 1 to 8 do {_obj addItemToVest "30Rnd_65x39_caseless_mag_Tracer";};
+		_obj addItemToVest "SmokeShell";
+		_obj addWeapon "arifle_MXM_F";
+		_obj addPrimaryWeaponItem "optic_Holosight";
+		_obj setunitrank "PRIVATE";
+	};
+
+	//Marksman/Sharpshooter
+	case "O_Sharpshooter_F": {
+		for "_i" from 1 to 8 do {_obj addItemToVest "30Rnd_65x39_caseless_mag_Tracer";};
+		_obj addItemToVest "SmokeShell";
+		_obj addWeapon "arifle_MXM_F";
+		_obj addPrimaryWeaponItem "optic_Holosight";
+		_obj setunitrank "PRIVATE";
 	};
 
 	//Rifleman
@@ -276,7 +294,7 @@ switch (_type) do {
 		_obj addBackpack "B_AssaultPack_blk";
 		_obj addItemToBackpack "Medikit";
 		for "_i" from 1 to 2 do {_obj addItemToBackpack "FirstAidKit";};
-		_obj addWeapon "arifle_MXM_F";
+		_obj addWeapon "arifle_MXC_F";
 		_obj addPrimaryWeaponItem "optic_Holosight";
 		_obj setunitrank "CORPORAL";
 	};
@@ -286,7 +304,7 @@ switch (_type) do {
 		for "_i" from 1 to 8 do {_obj addItemToVest "30Rnd_65x39_caseless_mag_Tracer";};
 		_obj addBackpack "B_AssaultPack_blk";
 		for "_i" from 1 to 4 do {_obj addItemToBackpack "DemoCharge_Remote_Mag";};
-		_obj addWeapon "arifle_MXM_F";
+		_obj addWeapon "arifle_MXC_F";
 		_obj addPrimaryWeaponItem "optic_Holosight";
 		_obj setunitrank "CORPORAL";
 	};

@@ -59,6 +59,14 @@ switch (_type) do {
 		_obj setunitrank "CORPORAL";
 	};
 
+	//Marksman/Sharpshooter
+	case "I_Soldier_M_F": {
+		for "_i" from 1 to 8 do {_obj addItemToVest "30Rnd_65x39_caseless_mag";};
+		_obj addWeapon "arifle_MXM_Black_F";
+		_obj addPrimaryWeaponItem "optic_Aco";
+		_obj setunitrank "PRIVATE";
+	};
+
 	//Autorifleman
 	case "I_Soldier_AR_F": {
 		for "_i" from 1 to 3 do {_obj addItemToVest "100Rnd_65x39_caseless_mag";};
