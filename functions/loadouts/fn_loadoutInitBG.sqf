@@ -13,7 +13,8 @@
 private ["_obj", "_type"];
 _obj = param [0, objNull, [objNull]];
 
-if isNull _obj throw "Invalid Argument: must provide valid object";
+if (isNull _obj) throw "Invalid Argument: must provide valid object";
+if (_obj in playableUnits) exitWith {false};
 
 _type = typeof _obj;
 
