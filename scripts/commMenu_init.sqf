@@ -86,7 +86,7 @@ if (!isNil {comm_baseDeployMenu}) then {
 /////
 /////
 
-if ((str player) in (baseData select 4 select 2)) then {
+if ((str player) in ["A15","A16","A25","A26","A35","A36","A4","A5","A6","A6O","A7"]) then {
 	
 	comm_logisticsMenu =
 	[

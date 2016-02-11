@@ -20,14 +20,14 @@ showHUD [true,true,true,true,true,true,false,true];
 // =================================================================
 // LOGISTICS
 
-// Sets the seed balance of the bank balance, if not otherwise set.
-seedBalance = 500000;
-
 // Custom item categories and buy and sell values,
 #include "scripts\includes\inc_logisticsIVTable.hpp"
 
 // Spawn position for the logistics helicopter.
 defaultHeloPosition = getMarkerPos "Helipoint";
+
+// For Dynamic Groups;
+#include "scripts\includes\inc_playerSpawnGroups.hpp"
 
 // Disconnected Player Body Cleanup
 // Only deletes players body if completely empty.
@@ -46,3 +46,10 @@ addMissionEventHandler ["HandleDisconnect",{
 
 	if ((count _itemCntArray) == 0) then {deleteVehicle _discObj};
 }];
+
+// PublicVariable that spawns the baseMenuUpdater when comm_baseDeployMenu is PV'd.
+"mortarTriggerTracker" addPublicVariableEventHandler {
+	_varName = _this select 1;
+	_trgName = format ["%1_trigger", _varName];
+	missionNamespace setVariable [_trgName, createTrigger ["EmptyDetector", (getPOS (missionNamespace getVariable _varName))], true];
+};

@@ -49,3 +49,53 @@ player addEventHandler ["Take", {
 		[player] call ASG_fnc_setUniform;
 	};
 }];
+
+// Zeus Object Handlers;
+handleMortar = Zeus addEventHandler ["CuratorObjectPlaced", {
+	_obj = _this select 1;
+	0 = [_obj] spawn {
+		_obj = _this select 0;
+		if ((typeOf _obj) == "O_Mortar_01_F" || (typeOf _obj) == "I_Mortar_01_F") then {
+			_posVar = round (getPOS _obj select 0);	// 2069
+			_objVar = format ["m_%1", _posVar];	// M_2069
+			_trgVar = format ["%1_trigger", _objVar];	// M_2069_trigger
+			_tarVar = format ["%1_target", _objVar];	// M_2069_target
+			missionNamespace setVariable [_objVar, _obj, true];	// Public broadcast
+			mortarTriggerTracker = _objVar;	// Pass to eventhandler in init.sqf
+			publicVariableServer "mortarTriggerTracker";
+			
+			waitUntil {!isNil _trgVar};
+			
+			if (!isDedicated) then {
+				missionNamespace getVariable _trgVar setTriggerArea [1000, 1000, 0, false];
+				missionNamespace getVariable _trgVar setTriggerActivation ["WEST", "PRESENT", true];
+				missionNamespace getVariable _trgVar setTriggerStatements ["this", "
+					_objVar = format ['M_%1', round (getPOS thisTrigger select 0)];
+					_trgVar = format ['%1_trigger', _objVar];
+					_tarVar = format ['%1_target', _objVar];
+					_scriptVar = format ['%1_script', _objVar];
+					if (!alive (missionNamespace getVariable _objVar)) exitWith {
+						deleteVehicle (missionNamespace getVariable _trgVar);
+					};
+					if (isNil {(missionNameSpace getVariable _tarVar)}) then {
+						missionNamespace setVariable [_tarVar, thisList select 0];
+					};
+					missionNameSpace setVariable [_scriptVar, [(missionNameSpace getVariable _tarVar), (missionNameSpace getVariable _objVar)] spawn ASG_fnc_mortarFireCalculator];
+				", "
+					_objVar = format ['M_%1', round (getPOS thisTrigger select 0)];
+					_trgVar = format ['%1_trigger', _objVar];
+					_tarVar = format ['%1_target', _objVar];
+					_scriptVar = format ['%1_script', _objVar];
+					missionNamespace setVariable [_tarVar, nil];
+					if (!alive (missionNamespace getVariable _objVar)) then {
+						deleteVehicle (missionNamespace getVariable _trgVar);
+					};
+					diag_log 'MORTAR:	Strikes terminated. Out of range.';
+				"];
+			};
+		};
+	};
+	
+}];
+
+// terminate (missionNameSpace getVariable _scriptVar);

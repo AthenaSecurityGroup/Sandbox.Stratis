@@ -14,6 +14,7 @@ showHUD [true,true,true,true,true,true,false,true];
 ["Initialize", [true]] call ASG_fnc_dynamicGroups;
 
 // Initialize Bank Account Data
+seedBalance = 500000;
 bankBalance = profileNamespace getVariable ["#ASG_BankBalance",seedBalance];
 publicVariable "bankBalance";
 // Initialize BaseData
