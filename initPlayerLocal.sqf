@@ -67,7 +67,7 @@ handleMortar = Zeus addEventHandler ["CuratorObjectPlaced", {
 			waitUntil {!isNil _trgVar};
 			
 			if (!isDedicated) then {
-				missionNamespace getVariable _trgVar setTriggerArea [1000, 1000, 0, false];
+				missionNamespace getVariable _trgVar setTriggerArea [950, 950, 0, false];
 				missionNamespace getVariable _trgVar setTriggerActivation ["WEST", "PRESENT", true];
 				missionNamespace getVariable _trgVar setTriggerStatements ["this", "
 					_objVar = format ['M_%1', round (getPOS thisTrigger select 0)];
@@ -90,6 +90,8 @@ handleMortar = Zeus addEventHandler ["CuratorObjectPlaced", {
 					if (!alive (missionNamespace getVariable _objVar)) then {
 						deleteVehicle (missionNamespace getVariable _trgVar);
 					};
+					terminate (missionNameSpace getVariable _scriptVar);
+					(missionNameSpace setVariable [_scriptVar, nil]);
 					diag_log 'MORTAR:	Strikes terminated. Out of range.';
 				"];
 			};
@@ -97,5 +99,3 @@ handleMortar = Zeus addEventHandler ["CuratorObjectPlaced", {
 	};
 	
 }];
-
-// terminate (missionNameSpace getVariable _scriptVar);
