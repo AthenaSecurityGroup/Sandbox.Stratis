@@ -41,7 +41,7 @@ private ["_existingChannelNames"];
 	_channelStatus = "Connect " + (_x select 0); // "Platoon 1"
 	_channelIndex = _forEachIndex + 1; // "1"
 	_channelHotKey = _channelIndex + 1; // "2"
-	_callRadio = format ["[%1, %2, ""%3""] call ASG_fnc_radioControl;", true, _channelIndex, (_x select 0)];
+	_callRadio = format ["[%1, %2, '%3'] call ASG_fnc_radioControl;", true, _channelIndex, (_x select 0)];
 	if ((_x select 0) in _existingChannelNames) then {
 		_channelStatus = "Disconnect " + (_x select 0);
 		_callRadio = format ["[%1, %2, ""%3""] call ASG_fnc_radioControl;", false, _channelIndex, (_x select 0)];
