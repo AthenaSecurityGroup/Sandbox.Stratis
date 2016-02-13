@@ -33,6 +33,9 @@ publicVariable "baseFollowTerrain";
 // Get default position of all inventory boxes.
 [] call ASG_fnc_getDefaultBoxAnchor;
 
+// Deploy the persistent gear state;
+call ASG_fnc_persistDeploy;
+
 // =================================================================
 // GRID TRACKER
 activeGrids = [];
@@ -61,3 +64,6 @@ trackedPlayers = ["A11","A12","A13","A21","A22","A23","A31","A32","A33","A4","B1
 // =================================================================
 // LOGISTICS
 [] spawn ASG_fnc_logistics;
+
+// Initiates the server save state to profileNamespace every x seconds.
+call ASG_fnc_persistSave;

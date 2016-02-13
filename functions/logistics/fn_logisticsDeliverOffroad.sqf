@@ -50,9 +50,9 @@ _waypoint1 setWaypointStatements ["true","heloName land 'LAND';"];
 
 _veh = createVehicle ["C_Offroad_01_F",position heloName,[],0,"NONE"];
 _veh allowDamage false;
+sleep 1;
 heloName setSlingLoad _veh;
-
-heloName addItemCargoGlobal ["ToolKit", 1];
+sleep 2;
 
 [
 	_veh,

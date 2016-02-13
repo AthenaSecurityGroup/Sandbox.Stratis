@@ -1,6 +1,11 @@
-// fn_cargoArrayAdd
-// Adds cargo from a two-array multinest.
-
+/*
+	ASG_fnc_cargoArrayAdd
+	
+		Input:	0	ARRAY	Array of Items.
+				1	OBJECT	Target Container
+		Usage: 	Adds cargo from a two-array multinest.
+ 
+*/
 _freightContents = _this select 0;
 _target = _this select 1;
 

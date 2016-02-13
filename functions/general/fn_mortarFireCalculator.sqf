@@ -1,9 +1,9 @@
 //	select 0:	OBJ	Incoming player target;
 diag_log format ["MORTAR:	Script has started"];
 _mortarCheckROF = 100; // Threshold that will be randomized for ROF between mortar ranging shots (seconds).
-_mortarTriggerChance = 90; // 75 = %25
+_mortarTriggerChance = 85; // 75 = %25
 _diceRollTime = 15;	// How often the dice rolls again when failing.
-_loiterDistance = 75; // How far target must be from last position to be barraged.
+_loiterDistance = 75; // Target must be over this distance away from last position during loiter check.
 _target = _this select 0;
 _nearMortar = _this select 1;
 
@@ -19,7 +19,7 @@ _tgtCorrectionY = (random 80);
 
 waitUntil {
 	_diceRoll = round (random 100);
-	diag_log format ["MORTAR:%2	Dice (> 75) = %1", _diceRoll, (str _nearMortar)];
+	diag_log format ["MORTAR:%2	Dice (> 85) = %1", _diceRoll, (str _nearMortar)];
 	if (_diceRoll > _mortarTriggerChance) then {
 		diag_log "MORTAR:	Strike has been triggered.";
 		_strikeCounter = 0;
@@ -39,11 +39,11 @@ waitUntil {
 				_counter = 1;
 				while {_counter < 5} do
 				{
-					_targetPOS = [((getPOS _target select 0) + (random 25)), ((getPOS _target select 1) + (random 29))];
+					_targetPOS = [((getPOS _target select 0) + (random 29)), ((getPOS _target select 1) + (random 29))];
 					(_nearMortar) doArtilleryFire [_targetPOS, currentMagazine (_nearMortar), 1];
 					_counter = _counter + 1;
 					diag_log format ["MORTAR:	Barrage: %1 @ %2", _counter, _targetPOS];
-					sleep (random 3);
+					sleep (random 5);
 				};
 			};
 			diag_log format ["MORTAR:	Strike: %1 -- Coord: %2", _strikeCounter, _targetPOS];

@@ -6,17 +6,26 @@
 	
 */
 
-private ["_baseIndex","_baseStatus"];
+private ["_baseIndex","_baseStatus", "_persistDeploy"];
 
 _baseIndex = _this select 0;	// SCALAR 	- 	Index of the base.
 _baseStatus = _this select 1;	// BOOL		- 	Deployed, True or False.
 _markerName = (baseData select _baseIndex select 4 select 2);
 _markerType = (baseData select _baseIndex select 4 select 0);
 _markerColor = (baseData select _baseIndex select 4 select 1);
+_tarPOS = (getPOS player);
+_tarDir = (getDir player);
+
+// Check if there is a third value in the array, which indicates an admin reset or persistence check.
+if (count _this > 2) then {
+		_persistDeploy = _this select 2;
+		_tarPOS = _persistDeploy select 0;
+		_tarDir = _persistDeploy select 1;
+};
 
 if (_baseStatus) then {
 	// Deploy
-	_deployedObj = [getPOS player, getDir player, (baseComps select _baseIndex)] call ASG_fnc_objectMapper;
+	_deployedObj = [_tarPOS, _tarDir, (baseComps select _baseIndex)] call ASG_fnc_objectMapper;
 	(baseData select _baseIndex) set [3, _deployedObj];
 	_cluttArray = [(baseComps select _baseIndex), "Land_ClutterCutter_small_F"] call KK_fnc_findAll;
 	{
@@ -28,13 +37,13 @@ if (_baseStatus) then {
 	_markerVar setMarkerType _markerType;
 	_markerVar setMarkerColor _markerColor;
 	_markerVar setMarkerText _markerName;
+	_markerVar setMarkerDir (_tarDir);
 	hint format ["Deploying the %1", (baseData select _baseIndex select 1)];
 	// Attach Base Boxes
 	[_baseIndex] call ASG_fnc_baseDeployBoxes;
 	sleep 5;
 	{
 		[_x, false] remoteExec ["hideObjectGlobal", 2];
-		// [player, _x] remoteExec ["reveal"];
 	} forEach _deployedObj;
 	
 } else {

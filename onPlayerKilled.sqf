@@ -10,7 +10,6 @@ if (player getVariable ["BIS_revive_incapacitated", false]) exitWith {
 	for "_i" from 0 to (count CHANNELS) do {
 		if (!isNil {comm_radioControlMenu}) then {
 			if ((((comm_radioControlMenu) select _i select 0) splitString " " select 0) == "Disconnect") then {
-				diag_log _i;
 				_channel = (CHANNELS select (_i - 1) select 0);
 				[true, _i, _channel] call ASG_fnc_radioControl;
 			};
@@ -28,4 +27,18 @@ cutText ["","BLACK"];
 if (simulationEnabled (respawnHelo select 0)) then {
 	[(_this select 0), true] call ASG_fnc_logisticsDeathCamera;
 	cutText ["","BLACK IN", 20];
+};
+
+sleep 4;
+
+// Yes, double code, I know. Eventually I want to rewrite the custom radio
+// channels menu to be programmatically generated and more closely tied with, and
+// integrated into moses' radio, so this bandaid will suffice for now.
+for "_i" from 0 to (count CHANNELS) do {
+	if (!isNil {comm_radioControlMenu}) then {
+		if ((((comm_radioControlMenu) select _i select 0) splitString " " select 0) == "Disconnect") then {
+			_channel = (CHANNELS select (_i - 1) select 0);
+			[true, _i, _channel] call ASG_fnc_radioControl;
+		};
+	};
 };

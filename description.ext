@@ -73,6 +73,8 @@ class cfgFunctions {
 			class getRankHash {};
 			class menuDisableEntries {};
 			class mortarFireCalculator {};
+			class persistSave {};
+			class persistDeploy {};
 		};
 	};
 	class KK {

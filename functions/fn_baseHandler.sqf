@@ -9,9 +9,15 @@
 _baseIndex = ((((missionNamespace getVariable (_this select 0)) select 1) select 0) - 2);
 _markerName = (baseData select _baseIndex select 4 select 2);
 _baseStatus = (baseData select _baseIndex select 0);
+private ["_dist"];
+if (count _this > 1) then {
+	_dist = _this select 1;
+} else {
+	_dist = ((player distance getmarkerpos _markerName) > 20);
+};
 
 ///
-if ((_baseStatus isEqualTo true) && (player distance getmarkerpos _markerName) > 20) exitWith {
+if ((_baseStatus isEqualTo true) && (_dist)) exitWith {
 	hint format ["You are too far away to dismantle %1.", _markerName];
 };
 (baseData select _baseIndex) set [0, (!((baseData select _baseIndex) select 0))];
