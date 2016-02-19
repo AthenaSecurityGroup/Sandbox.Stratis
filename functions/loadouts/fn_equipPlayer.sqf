@@ -77,7 +77,7 @@ _func = {
 			};
 			// TODO: Figure out a better way than randomly sleeping. Super dumb BIS.
 			if (_isIncap) then {sleep 0.2};
-			if (_isRespawn) then {sleep 0.2};
+			if (_isRespawn) then {sleep 0.5};
 		};
 
 		[_unit, _isRespawn] call ASG_fnc_setUniform;
