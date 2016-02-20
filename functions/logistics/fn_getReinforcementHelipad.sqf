@@ -4,11 +4,11 @@ _deployedBases = baseData select {_x select 0};
 if (count _deployedBases == 0) exitWith {position respawnIsland};
 
 // TODO: embedded data in base data structures.
-_baseIndices = [7, 9, 10];
+_baseIndices = [7, 10, 9];
 _basesWithHelipads = [
 	baseData select (_baseIndices select 0), // TOC
-	baseData select (_baseIndices select 1), // FOB
-	baseData select (_baseIndices select 2) // MOB
+	baseData select (_baseIndices select 1), // MOB
+	baseData select (_baseIndices select 2) // FOB
 ];
 
 _intersection = _deployedBases arrayIntersect _basesWithHelipads;
