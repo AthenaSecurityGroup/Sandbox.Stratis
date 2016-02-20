@@ -44,16 +44,16 @@ class cfgFunctions {
 			class gridGetCent {};
 		};
 		class baseDeployment {
-			file = "functions";
-			class baseEntryCreator {};
-			class baseMenuUpdater {};
-			class baseHandler {};
-			class baseDeployer {};
 			class baseDeployBoxes {};
+			class baseDeployer {};
+			class baseEntryCreator {};
+			class baseHandler {};
+			class baseMenuUpdater {};
 			class baseRemoveBoxes {};
-			class playerSpawn {};
-			class objectMapper {};
 			class getDefaultBoxAnchor {};
+			class objectMapper {};
+			class playerSpawn {};
+
 		};
 		class logistics {
 			class logistics {};
