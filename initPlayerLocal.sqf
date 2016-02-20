@@ -50,12 +50,14 @@ player addEventHandler ["Take", {
 	};
 }];
 
-// Zeus Object Handlers;
+// Handle enemy mortars deployed by Zeus
+//  Forces them into custom firing patterns.
 handleMortar = Zeus addEventHandler ["CuratorObjectPlaced", {
 	_obj = _this select 1;
 	0 = [_obj] spawn {
 		_obj = _this select 0;
 		if ((typeOf _obj) == "O_Mortar_01_F" || (typeOf _obj) == "I_Mortar_01_F") then {
+            (group _obj) setGroupOwner 2;
 			_posVar = round (getPOS _obj select 0);	// 2069
 			_objVar = format ["m_%1", _posVar];	// M_2069
 			_trgVar = format ["%1_trigger", _objVar];	// M_2069_trigger
@@ -74,25 +76,14 @@ handleMortar = Zeus addEventHandler ["CuratorObjectPlaced", {
 					_trgVar = format ['%1_trigger', _objVar];
 					_tarVar = format ['%1_target', _objVar];
 					_scriptVar = format ['%1_script', _objVar];
-					if (!alive (missionNamespace getVariable _objVar)) exitWith {
-						deleteVehicle (missionNamespace getVariable _trgVar);
-					};
-					if (isNil {(missionNameSpace getVariable _tarVar)}) then {
-						missionNamespace setVariable [_tarVar, thisList select 0];
-					};
-					missionNameSpace setVariable [_scriptVar, [(missionNameSpace getVariable _tarVar), (missionNameSpace getVariable _objVar)] spawn ASG_fnc_mortarFireCalculator];
+                    [_objVar, _trgVar, _tarVar, _scriptVar, (thisList select 0)] remoteExec ['ASG_fnc_mortarTrack', 2];
 				", "
 					_objVar = format ['M_%1', round (getPOS thisTrigger select 0)];
 					_trgVar = format ['%1_trigger', _objVar];
 					_tarVar = format ['%1_target', _objVar];
 					_scriptVar = format ['%1_script', _objVar];
 					missionNamespace setVariable [_tarVar, nil];
-					if (!alive (missionNamespace getVariable _objVar)) then {
-						deleteVehicle (missionNamespace getVariable _trgVar);
-					};
-					terminate (missionNameSpace getVariable _scriptVar);
-					(missionNameSpace setVariable [_scriptVar, nil]);
-					diag_log 'MORTAR:	Strikes terminated. Out of range.';
+                    [_objVar, _trgVar, _tarVar, _scriptVar] remoteExec ['ASG_fnc_mortarTerminate', 2];
 				"];
 			};
 		};

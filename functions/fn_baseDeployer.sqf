@@ -37,7 +37,7 @@ if (_baseStatus) then {
 	_markerVar setMarkerType _markerType;
 	_markerVar setMarkerColor _markerColor;
 	_markerVar setMarkerText _markerName;
-	_markerVar setMarkerDir (_tarDir);
+	// _markerVar setMarkerDir (_tarDir);
 	hint format ["Deploying the %1", (baseData select _baseIndex select 1)];
 	// Attach Base Boxes
 	[_baseIndex] call ASG_fnc_baseDeployBoxes;

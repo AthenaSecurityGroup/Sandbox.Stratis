@@ -19,11 +19,11 @@ _tgtCorrectionY = (random 80);
 
 waitUntil {
 	_diceRoll = round (random 100);
-	diag_log format ["MORTAR:%2	Dice (> 85) = %1", _diceRoll, (str _nearMortar)];
+	diag_log format ["MORTAR:%2	Dice: %1", _diceRoll, (str _nearMortar)];
 	if (_diceRoll > _mortarTriggerChance) then {
 		diag_log "MORTAR:	Strike has been triggered.";
 		_strikeCounter = 0;
-		/// TO DO: for ARMA 1.55
+		/// TO DO:
 		// _targetRelDir = _nearMortar getRelDir _target;
 		// _nearMortar setFormDir _targetRelDir;
 		while {_strikeCounter >= 0} do {

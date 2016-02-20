@@ -76,6 +76,10 @@ class cfgFunctions {
 			class persistSave {};
 			class persistDeploy {};
 		};
+        class mortar {
+            class mortarTrack {};
+            class mortarTerminate {};
+        };
 	};
 	class KK {
 		file = "functions";

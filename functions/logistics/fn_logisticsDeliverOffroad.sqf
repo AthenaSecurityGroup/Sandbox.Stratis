@@ -39,20 +39,9 @@ format ["Delivery en route to the %1", _baseName] remoteExec ["hint", _playerID]
 
 slingZone = createVehicle ["Land_HelipadEmpty_F", [(_landingZone select 0), (_landingZone select 1), ((_landingZone select 2)+8)], [], 0, "FLY"];
 
-// Waypoint 1, to the slingZone
-diag_log format ["Generating waypoint 1"];
-_waypoint1 = heloGroup addWaypoint [(position slingZone), 1];
-_waypoint1 setWayPointBehaviour "CARELESS";
-_waypoint1 setWayPointSpeed "FULL";
-_waypoint1 setWayPointType "LOAD";
-_waypoint1 setWayPointCombatMode "BLUE";
-_waypoint1 setWaypointStatements ["true","heloName land 'LAND';"];
-
 _veh = createVehicle ["C_Offroad_01_F",position heloName,[],0,"NONE"];
 _veh allowDamage false;
-sleep 1;
 heloName setSlingLoad _veh;
-sleep 2;
 
 [
 	_veh,
@@ -69,6 +58,17 @@ clearWeaponCargoGlobal _veh;
 clearMagazineCargoGlobal _veh;
 clearItemCargoGlobal _veh;
 clearBackpackCargoGlobal _veh;
+
+sleep 0.5;
+
+// Waypoint 1, to the slingZone
+diag_log format ["Generating waypoint 1"];
+_waypoint1 = heloGroup addWaypoint [(position slingZone), 1];
+_waypoint1 setWayPointBehaviour "CARELESS";
+_waypoint1 setWayPointSpeed "FULL";
+_waypoint1 setWayPointType "LOAD";
+_waypoint1 setWayPointCombatMode "BLUE";
+_waypoint1 setWaypointStatements ["true","heloName land 'LAND';"];
 
 waitUntil {
 	if (((heloName distance slingZone) <= 8)) then {
