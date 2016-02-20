@@ -15,14 +15,16 @@ _mortarTar = _this select 0;	// The mortar's target.
 _mortarObj = _this select 1;	// The mortar itself.
 
 diag_log format ["MORTAR:	%1 has started.", _thisScript];
+diag_log format ["MORTAR:	Incoming Items: %1", _this];
+diag_log format ["MORTAR:	Target: %1", _mortarTar];
+diag_log format ["MORTAR:	Mortar: %1", _mortarObj];
 
 // MORTAR DEFAULT VALUES
-_mortarChance = 20;			//	Chance to trigger mortar engagement. (75 = 25%). 85
-_mortarDiceInt = 60;		//	Time between dice rolls after failing a dice roll. 15
+_mortarChance = 75;			//	Chance to trigger mortar engagement. (75 = 25%). 85
+_mortarDiceInt = 60;			//	Time between dice rolls after failing a dice roll. 15
 _mortarLoiterDist = 75;		//	How far the target must be from its last position to avoid zeroing.
 _mortarBrackPOS = [0,0];	//	Default initial value for target bracketing.
 _mortarBrackRnds = 1;		//	How many shells dropped per bracket shot.
-_mortarBrackAtt = 3;		// 	How many shells to bracket a target.
 _strikeCounter = 0;			//	How many times the mortar has fired.
 
 scopeName "mainLoop";
@@ -59,6 +61,7 @@ waitUntil {
 				_adjustmentY = round random [-85, 0 , 85];
 			};
 		};
+		diag_log format ["MORTAR:	Fire for effect:	%1", _barrage];
 		if (_barrage && ((getPOS _mortarTar distance2D _mortarBrackPOS) < _mortarLoiterDist)) then {
 			diag_log format ["MORTAR:	Target is loitering. Preparing mortar strike"];
 			_barrageCounter = 0;
@@ -68,11 +71,12 @@ waitUntil {
 				_target = [(getPOS _mortarTar select 0) + _adjustmentX,(getPOS _mortarTar select 1) + _adjustmentY];
 				_mortarObj doArtilleryFire [_target, currentMagazine (_mortarObj), 1];
 				_barrageCounter = _barrageCounter + 1;
-				diag_log format ["MORTAR:	Barrage %1 at %2", _barrageCounter, _target];
+				diag_log format ["MORTAR:	Fire for effect %1 at %2", _barrageCounter, _target];
 				sleep floor (random 12);
 			};
 			_barrage = false;
 		} else {
+			diag_log format ["MORTAR:	Shot out."];
 			_mortarObj doArtilleryFire [[(getPOS _mortarTar select 0) + _adjustmentX,(getPOS _mortarTar select 1) + _adjustmentY], currentMagazine (_mortarObj), _mortarBrackRnds];
 		};
 		

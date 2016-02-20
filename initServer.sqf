@@ -67,3 +67,37 @@ trackedPlayers = ["A11","A12","A13","A21","A22","A23","A31","A32","A33","A4","B1
 
 // Initiates the server save state to profileNamespace every x seconds.
 call ASG_fnc_persistSave;
+
+// PublicVariable that spawns the attack when mortarTriggerTracker is PV'd.
+"mortarTriggerTracker" addPublicVariableEventHandler {
+	_varName = _this select 1;
+	_trgName = format ["%1_trigger", _varName];
+	missionNamespace setVariable [_trgName, createTrigger ["EmptyDetector", (getPOS (missionNamespace getVariable _varName))], true];
+	(missionNamespace getVariable _trgName) attachTo [(missionNamespace getVariable _varName), [0,0,0]];
+	(missionNamespace getVariable _trgName) setTriggerArea [1000, 1000, 0, false];
+	(missionNamespace getVariable _trgName) setTriggerActivation ["WEST", "PRESENT", true];
+	(missionNamespace getVariable _trgName) setTriggerStatements ["this", "
+		diag_log 'MORTAR:	Target entered area.';
+		_number = round floor (getPOS thisTrigger select 0);
+		_mortarName = format ['M_%1', _number];
+		_trgName = format ['%1_trigger', _mortarName];
+		_mortarTar = thisList select 0;
+		_scriptName = format ['%1_script', _mortarName];
+		_targetName = format ['%1_target', _mortarName];
+		missionNamespace setVariable [_targetName, _mortarTar, true];
+		missionNameSpace setVariable [_scriptName, [missionNameSpace getVariable _targetName, missionNameSpace getVariable _mortarName] spawn ASG_fnc_mortarFireLogic];
+	", "
+		diag_log 'MORTAR:	Target left area. Ceasing fire';
+		_number = round floor (getPOS thisTrigger select 0);
+		_mortarName = format ['M_%1', _number];		
+		_scriptName = format ['%1_script', _mortarName];
+		diag_log _scriptName;
+		terminate (missionNamespace getVariable _scriptName);
+		missionNameSpace setVariable [_scriptName, nil];
+	"];
+	
+};
+
+//[_mortarName, _trgName, _targetName, _scriptName, _mortarTar] spawn ASG_fnc_mortarTrack;
+
+
