@@ -19,10 +19,10 @@ heloName hideObjectGlobal true;
 (driver heloName) setCombatMode "Blue";
 group heloName enableAttack false;
 
-clearWeaponCargoGlobal heloName;	
-clearMagazineCargoGlobal heloName;	
-clearItemCargoGlobal heloName;		
-clearBackpackCargoGlobal heloName;	
+clearWeaponCargoGlobal heloName;
+clearMagazineCargoGlobal heloName;
+clearItemCargoGlobal heloName;
+clearBackpackCargoGlobal heloName;
 
 ASG_logisticsHeloQueue = []; // TODO: Don't use a global.
 
@@ -52,7 +52,7 @@ ASG_logisticsHeloQueue = []; // TODO: Don't use a global.
 		} forEach _assigned;
 
 		// Give Helo Orders Here
-		_waypoint1 = group _helo addWaypoint [position respawnIsland, 10];
+		_waypoint1 = group _helo addWaypoint [[] call ASG_fnc_getReinforcementHelipad, 10];
 		_waypoint1 setWayPointBehaviour "CARELESS";
 		_waypoint1 setWayPointSpeed "FULL";
 		_waypoint1 setWayPointType "LOAD";
@@ -64,20 +64,20 @@ ASG_logisticsHeloQueue = []; // TODO: Don't use a global.
 			sleep 0.5;
 			getPOS _helo select 2 <= 0.5;
 		};
-		
+
 		_helo land "NONE";
 
 		{
 			_x action ["Eject", vehicle _x];
 			unassignVehicle _x;
 		} forEach _assigned;
-		
+
 
 		waitUntil {
 			sleep 10; //o:3
 			{_x in _helo} count _assigned == 0;
 		};
-		
+
 		diag_log "fn_logistics: Logistics Huron is departing.";
 
 		_helo AnimateDoor ['Door_rear_source', 0];
