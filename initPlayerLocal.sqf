@@ -69,7 +69,7 @@ handleMortar = Zeus addEventHandler ["CuratorObjectPlaced", {
 			waitUntil {!isNil _trgVar};
 			
 			if (!isDedicated) then {
-				missionNamespace getVariable _trgVar setTriggerArea [950, 950, 0, false];
+				missionNamespace getVariable _trgVar setTriggerArea [1200, 1200, 0, false];
 				missionNamespace getVariable _trgVar setTriggerActivation ["WEST", "PRESENT", true];
 				missionNamespace getVariable _trgVar setTriggerStatements ["this", "
 					_objVar = format ['M_%1', round (getPOS thisTrigger select 0)];

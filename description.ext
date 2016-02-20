@@ -72,13 +72,13 @@ class cfgFunctions {
 			class dynamicGroups {};
 			class getRankHash {};
 			class menuDisableEntries {};
-			class mortarFireCalculator {};
 			class persistSave {};
 			class persistDeploy {};
 		};
         class mortar {
             class mortarTrack {};
             class mortarTerminate {};
+			class mortarFireLogic {};
         };
 	};
 	class KK {

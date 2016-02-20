@@ -18,9 +18,7 @@ if (isServer) then {
 			sleep 3600; // def: 3600 -- every one hour.
 		};
 	};
-	
-	// Save base data.
-	
+
 	// Save nearby vehicles
 	_savedvehicleData = [];
 	{
@@ -38,11 +36,6 @@ if (isServer) then {
 			} forEach _nearEntities;
 		};
 	} forEach baseData;
-	profileNamespace setVariable ["ASGbases", _savedBaseData];
-	diag_log format ["fn_persistSave:	ASGBases: %1",(profileNamespace getVariable "ASGbases")];
 	profileNamespace setVariable ["ASGvehicles", _savedvehicleData];
-	diag_log format ["fn_persistSave:	ASGvehicles: %1",(profileNamespace getVariable "ASGvehicles")];
-	diag_log "Ending fn_persistSave...returning ASGbases and ASGvehicles...";
-
 	saveProfileNamespace;
 }; // end isServer.

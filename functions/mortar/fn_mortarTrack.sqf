@@ -25,4 +25,4 @@ if (!alive (missionNamespace getVariable _objVar)) exitWith {
 if (isNil {(missionNameSpace getVariable _tarVar)}) then {
         missionNamespace setVariable [_tarVar, _target];
     };
-missionNameSpace setVariable [_scriptVar, [(missionNameSpace getVariable _tarVar), (missionNameSpace getVariable _objVar)] spawn ASG_fnc_mortarFireCalculator];
+missionNameSpace setVariable [_scriptVar, [(missionNameSpace getVariable _tarVar), (missionNameSpace getVariable _objVar)] spawn ASG_fnc_mortarFireLogic];
