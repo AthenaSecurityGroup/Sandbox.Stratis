@@ -76,7 +76,7 @@ _func = {
 				!isNull player && (_hasLoadout || !_isIncap);
 			};
 			// TODO: Figure out a better way than randomly sleeping. Super dumb BIS.
-			if (_isIncap) then {sleep 0.2};
+			if (_isIncap) then {sleep 0.5};
 			if (_isRespawn) then {sleep 0.5};
 		};
 
