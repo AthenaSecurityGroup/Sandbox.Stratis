@@ -14,9 +14,9 @@ If an element recieves a CEASE FIRE message, the element will take cover, relay 
 
 //EXECUTION
 player createDiaryRecord ["diary", ["Execution","
-<font size='18'>COMMANDER'S INTENT</font>
+<font size='18'>MISSION INTENT</font>
 <br/>
-Athena Security Group will wisely choose when and where to engage the enemy. Associate elements will remain scarce where the enemy is strong, and be fierce where the enemy is weak.
+Athena Security Group will strive to provide safety and security to all people within its area of responsibility. When engaging in combat missions, associates will wisely choose when and where to engage the enemy. Associate elements will remain scarce where the enemy is strong, and be fierce where the enemy is weak.
 <br/><br/>
 <font size='18'>SPECIAL TASKS</font>
 <br/>
@@ -1104,7 +1104,7 @@ player creatediarysubject ["gear","Combat Loadout"];
 player creatediaryrecord ["gear",["Special Considerations","
 Specific circumstances call for alternate loadouts:
 <br/>
-Any night operation should substitute chemlights for smoke grenades.
+Any night operation should substitute yellow chemlights for white smoke grenades and substitute colored smoke with its matching chemlight color.
 <br/>
 Elements assigned to breach an obstacle should equip mine detectors and small explosive charges.
 <br/>
@@ -1121,7 +1121,7 @@ Heavy loads are similar to light loads, except with twice the munitions and two 
 player creatediaryrecord ["gear",["Medium Loadout","
 Medium combat loads are for accomplishing missions with lots of firepower. Medium loadouts are for missions that will be lengthy, when heavy contact is expected, or for squads in supporting or security roles of an attack.
 <br/>
-Medium combat loads are similar to light combat loads, but with with roughly fifty percent more of each type of munition, plus one extra autorifle belt each loaded into an assault pack.
+Medium combat loads are similar to light combat loads, but with with roughly fifty percent more of each type of munition, plus one extra autorifle belt per team member.
 "]];
 
 player creatediaryrecord ["gear",["Light Loadouts","
@@ -1159,7 +1159,11 @@ Loaded rifle
 <br/>
 8x rifle magazines
 <br/>
-6x smoke grenades
+1x autorifle belt
+<br/>
+6x white smoke grenades
+<br/>
+6x colored smoke grenades
 <br/><br/>
 <font size='18'>Rifleman</font>
 <br/>
@@ -1169,7 +1173,11 @@ Loaded rifle
 <br/>
 8x rifle magazines
 <br/>
-6x smoke grenades
+1x autorifle belt
+<br/>
+6x white smoke grenades
+<br/>
+6x colored smoke grenades
 <br/><br/>
 <font size='18'>Autorifleman</font>
 <br/>
@@ -1179,7 +1187,9 @@ Loaded autorifle
 <br/>
 2x autorifle belts
 <br/>
-6x smoke grenades
+6x white smoke grenades
+<br/>
+6x colored smoke grenades
 "]];
 
 player creatediarysubject ["special","Special Planning"];
