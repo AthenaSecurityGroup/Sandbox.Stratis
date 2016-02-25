@@ -20,7 +20,7 @@ diag_log format ["MORTAR:	Target: %1", _mortarTar];
 diag_log format ["MORTAR:	Mortar: %1", _mortarObj];
 
 // MORTAR DEFAULT VALUES
-_mortarChance = 10;			//	Chance to trigger mortar engagement. (75 = 25%). 85
+_mortarChance = 60;			//	Chance to trigger mortar engagement. (75 = 25%). 85
 _mortarDiceInt = 15;		//	Time between dice rolls after failing a dice roll. 15
 _mortarLoiterDist = 75;		//	How far the target must be from its last position to avoid zeroing.
 _mortarBrackPOS = [0,0];	//	Default initial value for target bracketing.

@@ -76,10 +76,10 @@ class cfgFunctions {
 			class persistSave {};
 			class persistDeploy {};
 		};
-        class mortar {
-            class deployMortar {};
+        class mortars {
 			class mortarFireLogic {};
-        };
+			class deployMortar {};
+		};
 	};
 	class KK {
 		file = "functions";

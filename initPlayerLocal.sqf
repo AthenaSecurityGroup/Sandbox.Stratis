@@ -49,24 +49,3 @@ player addEventHandler ["Take", {
 		[player, true] call ASG_fnc_setUniform;
 	};
 }];
-
-// Handle enemy mortars deployed by Zeus
-//  Forces them into custom firing patterns.
-handleMortar = Zeus addEventHandler ["CuratorObjectPlaced", {
-	_obj = _this select 1;
-	0 = [_obj] spawn {
-		_obj = _this select 0;
-		if ((typeOf _obj) == "O_Mortar_01_F" || (typeOf _obj) == "I_Mortar_01_F") then {
-            (group _obj) setGroupOwner 2;
-			_posVar = round floor (getPOS _obj select 0);	// 2069
-			_objVar = format ["m_%1", _posVar];	// M_2069
-			_trgVar = format ["%1_trigger", _objVar];	// M_2069_trigger
-			_tarVar = format ["%1_target", _objVar];	// M_2069_target
-			missionNamespace setVariable [_objVar, _obj, true];	// Public broadcast
-			mortarTriggerTracker = _objVar;	// Pass to eventhandler in init.sqf
-			publicVariableServer "mortarTriggerTracker";
-			waitUntil {!isNil _trgVar};
-			diag_log format ["MORTAR:	handleMortar on Zeus has completed."];
-		};
-	};
-}];
