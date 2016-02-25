@@ -46,10 +46,3 @@ addMissionEventHandler ["HandleDisconnect",{
 
 	if ((count _itemCntArray) == 0) then {deleteVehicle _discObj};
 }];
-
-// PublicVariable that spawns the attack when mortarTriggerTracker is PV'd.
-"mortarTriggerTracker" addPublicVariableEventHandler {
-	_varName = _this select 1;
-	_trgName = format ["%1_trigger", _varName];
-	missionNamespace setVariable [_trgName, createTrigger ["EmptyDetector", (getPOS (missionNamespace getVariable _varName))], true];
-};
