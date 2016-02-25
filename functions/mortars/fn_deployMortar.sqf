@@ -26,7 +26,7 @@ switch (_faction) do {
 		_mortarSide = EAST;
 	};
 	case "MILITIA": {
-		_mortarType = "O_G_Mortar_01_F";
+		_mortarType = "I_G_Mortar_01_F";
 		_mortarSide = Independent ;
 	};
 	default {
@@ -72,4 +72,17 @@ missionNamespace setVariable [
 	missionNameSpace setVariable [_mortarScriptName, nil];
 "];
 
-terminate _thisScript;
+sleep 0.5;
+
+// Equip Militia Mortar Special Case
+// TODO:	Update fn_loadoutInitO (or similar) to accept a second param to override typeOf _obj
+//			and force a specific soldier loadout. Like: [_obj, "O_soldierU_F"] call ASG_fnc_loadoutInitO;
+//			or something.
+
+if (_mortarType == "I_G_Mortar_01_F") then {
+	removeUniform ((missionNamespace getVariable _mortarVarStr) select 1 select 0);
+	removeVest ((missionNamespace getVariable _mortarVarStr) select 1 select 0);
+	((missionNamespace getVariable _mortarVarStr) select 1 select 0) forceAddUniform "U_I_G_Story_Protagonist_F";
+	((missionNamespace getVariable _mortarVarStr) select 1 select 0) addVest "V_Chestrig_khk";
+	removeHeadgear ((missionNamespace getVariable _mortarVarStr) select 1 select 0);
+};
