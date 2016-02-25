@@ -20,12 +20,16 @@ diag_log format ["MORTAR:	Target: %1", _mortarTar];
 diag_log format ["MORTAR:	Mortar: %1", _mortarObj];
 
 // MORTAR DEFAULT VALUES
-_mortarChance = 75;			//	Chance to trigger mortar engagement. (75 = 25%). 85
-_mortarDiceInt = 60;			//	Time between dice rolls after failing a dice roll. 15
+_mortarChance = 10;			//	Chance to trigger mortar engagement. (75 = 25%). 85
+_mortarDiceInt = 15;		//	Time between dice rolls after failing a dice roll. 15
 _mortarLoiterDist = 75;		//	How far the target must be from its last position to avoid zeroing.
 _mortarBrackPOS = [0,0];	//	Default initial value for target bracketing.
 _mortarBrackRnds = 1;		//	How many shells dropped per bracket shot.
 _strikeCounter = 0;			//	How many times the mortar has fired.
+
+// DISABLE THE AI
+_mortarObj disableAI "TARGET";
+_mortarObj disableAI "AUTOTARGET";
 
 scopeName "mainLoop";
 waitUntil {
@@ -72,7 +76,7 @@ waitUntil {
 				_mortarObj doArtilleryFire [_target, currentMagazine (_mortarObj), 1];
 				_barrageCounter = _barrageCounter + 1;
 				diag_log format ["MORTAR:	Fire for effect %1 at %2", _barrageCounter, _target];
-				sleep floor (random 12);
+				sleep floor (random 6);
 			};
 			_barrage = false;
 		} else {

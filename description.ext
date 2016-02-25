@@ -77,8 +77,7 @@ class cfgFunctions {
 			class persistDeploy {};
 		};
         class mortar {
-            class mortarTrack {};
-            class mortarTerminate {};
+            class deployMortar {};
 			class mortarFireLogic {};
         };
 	};
