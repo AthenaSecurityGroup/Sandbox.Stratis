@@ -11,6 +11,7 @@
 
 */
 
+private ['_mortarTar', '_mortarObj'];
 _mortarTar = _this select 0;	// The mortar's target.
 _mortarObj = _this select 1;	// The mortar itself.
 
@@ -20,8 +21,8 @@ diag_log format ["MORTAR:	Target: %1", _mortarTar];
 diag_log format ["MORTAR:	Mortar: %1", _mortarObj];
 
 // MORTAR DEFAULT VALUES
-_mortarChance = 60;			//	Chance to trigger mortar engagement. (75 = 25%). 85
-_mortarDiceInt = 15;		//	Time between dice rolls after failing a dice roll. 15
+_mortarChance = 50;			//	Chance to trigger mortar engagement. (75 = 25%). 85
+_mortarDiceInt = 35;		//	Time between dice rolls after failing a dice roll. 15
 _mortarLoiterDist = 75;		//	How far the target must be from its last position to avoid zeroing.
 _mortarBrackPOS = [0,0];	//	Default initial value for target bracketing.
 _mortarBrackRnds = 1;		//	How many shells dropped per bracket shot.
@@ -31,6 +32,10 @@ _strikeCounter = 0;			//	How many times the mortar has fired.
 _mortarObj disableAI "TARGET";
 _mortarObj disableAI "AUTOTARGET";
 
+// After the trigger is kicked off, wait 1 minute to create the feeling of a call for fire.
+// Otherwise the dice roll could trigger a mortar within ~10 seconds of first contact.
+diag_log "MORTAR:	Beginning call for fire. Wait 60 seconds.";
+sleep 60;
 scopeName "mainLoop";
 waitUntil {
 	if (!alive _mortarObj) exitWith {
@@ -79,6 +84,8 @@ waitUntil {
 				sleep floor (random 6);
 			};
 			_barrage = false;
+			diag_log format ["MORTAR:	Barrage has ended. Beginning 60 second cooldown."];
+			sleep 60;
 		} else {
 			diag_log format ["MORTAR:	Shot out."];
 			_mortarObj doArtilleryFire [[(getPOS _mortarTar select 0) + _adjustmentX,(getPOS _mortarTar select 1) + _adjustmentY], currentMagazine (_mortarObj), _mortarBrackRnds];
@@ -89,7 +96,6 @@ waitUntil {
 		diag_log format ["MORTAR:	Target POS: 		%1", (getPOS _mortarTar)];
 		diag_log format ["MORTAR:	Target adjustment:	%1", [_adjustmentX, _adjustmentY]];
 		diag_log format ["MORTAR:	Within loiter distance: %1", ((getPOS _mortarTar distance2D _mortarBrackPOS) < _mortarLoiterDist)];
-		
 		_mortarBrackPOS = getPOS _mortarTar;
 	};
 	sleep _mortarDiceInt;

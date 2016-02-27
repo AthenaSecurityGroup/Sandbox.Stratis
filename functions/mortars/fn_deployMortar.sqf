@@ -20,14 +20,17 @@ switch (_faction) do {
 	case "AAF": {
 		_mortarType = "I_Mortar_01_F";
 		_mortarSide = Independent;
+		_detectSide = "GUER D";
 	};
 	case "CSAT": {
 		_mortarType = "O_Mortar_01_F";
 		_mortarSide = EAST;
+		_detectSide = "EAST D";
 	};
 	case "MILITIA": {
-		_mortarType = "I_G_Mortar_01_F";
-		_mortarSide = Independent ;
+		_mortarType = "O_G_Mortar_01_F";
+		_mortarSide = EAST ;
+		_detectSide = "EAST D";
 	};
 	default {
 		diag_log "MORTAR:	Faction improperly defined.";
@@ -38,6 +41,7 @@ switch (_faction) do {
 // Generate variable names for use later.
 _mortarVarStr = format ["m_%1", round floor (_mortarPOS select 0)];
 _mortarTrgStr = format ["%1_trigger", _mortarVarStr];
+_mortarSpotStr = format ["%1_spotArea", _mortarVarStr];
 
 // Create mortar, and add to Zeus.
 diag_log format ["MORTAR:	%1 was deployed.", _mortarVarStr];
@@ -55,21 +59,44 @@ missionNamespace setVariable [
 ];
 (missionNameSpace getVariable _mortarTrgStr) attachTo [((missionNamespace getVariable _mortarVarStr) select 0)];
 (missionNameSpace getVariable _mortarTrgStr) setTriggerArea [_mortarRad, _mortarRad, 0, false];
-(missionNameSpace getVariable _mortarTrgStr) setTriggerActivation ["WEST", "PRESENT", true];
+if (_mortarSide == EAST) then {
+	(missionNameSpace getVariable _mortarTrgStr) setTriggerActivation ["WEST", "EAST D", true];
+} else {
+	(missionNameSpace getVariable _mortarTrgStr) setTriggerActivation ["WEST", "GUER D", true];
+};
 (missionNameSpace getVariable _mortarTrgStr) setTriggerStatements ["this", "
-	diag_log 'MORTAR:	Target entered area.';
 	_target = (thisList select 0);
 	_mortar = (((getPOS thisTrigger) nearEntities ['StaticMortar', 1]) select 0);
 	_mortarVarStr = (str (group _mortar) splitString 'R ' select 0);
-	_mortarScriptName = format ['%1_script', _mortarVarStr];
+	_mortarScriptName = format ['%1_trackScript', _mortarVarStr];
+	if (isNil {_mortar}) exitWith {
+		terminate (missionNamespace getVariable _mortarScriptName);
+		missionNameSpace setVariable [_mortarScriptName, nil];
+		missionNameSpace setVariable [(format ['%1_target', _mortarVarStr]), nil];
+		deleteVehicle thisTrigger;
+		diag_log format ['MORTAR:	Mortar is dead. Terminating.'];
+	};
 	missionNameSpace setVariable [_mortarScriptName, [_target, _mortar] spawn ASG_fnc_mortarFireLogic];
+	missionNameSpace setVariable [(format ['%1_target', _mortarVarStr]), _target];
+	diag_log format ['MORTAR:	A target is present for %1', _mortarVarStr];
+	if (!alive _mortar) then {
+		terminate (missionNamespace getVariable _mortarScriptName);
+		missionNameSpace setVariable [_mortarScriptName, nil];
+		missionNameSpace setVariable [(format ['%1_target', _mortarVarStr]), nil];
+		deleteVehicle thisTrigger;
+		diag_log format ['MORTAR:	Mortar is dead. Terminating.'];
+	};
 ", "
-	diag_log 'MORTAR:	Target left area. Ceasing fire';
 	_mortar = (((getPOS thisTrigger) nearEntities ['StaticMortar', 1]) select 0);
 	_mortarVarStr = (str (group _mortar) splitString 'R ' select 0);
-	_mortarScriptName = format ['%1_script', _mortarVarStr];
+	_mortarScriptName = format ['%1_trackScript', _mortarVarStr];
 	terminate (missionNamespace getVariable _mortarScriptName);
 	missionNameSpace setVariable [_mortarScriptName, nil];
+	missionNameSpace setVariable [(format ['%1_target', _mortarVarStr]), nil];
+	diag_log format ['MORTAR:	Targets left area. %1 terminating.', _mortarVarStr];
+	if (!alive _mortar) then {
+		deleteVehicle thisTrigger;
+	};
 "];
 
 sleep 0.5;
@@ -79,7 +106,7 @@ sleep 0.5;
 //			and force a specific soldier loadout. Like: [_obj, "O_soldierU_F"] call ASG_fnc_loadoutInitO;
 //			or something.
 
-if (_mortarType == "I_G_Mortar_01_F") then {
+if (_mortarType == "O_G_Mortar_01_F") then {
 	removeUniform ((missionNamespace getVariable _mortarVarStr) select 1 select 0);
 	removeVest ((missionNamespace getVariable _mortarVarStr) select 1 select 0);
 	((missionNamespace getVariable _mortarVarStr) select 1 select 0) forceAddUniform "U_I_G_Story_Protagonist_F";

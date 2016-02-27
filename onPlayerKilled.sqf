@@ -4,6 +4,10 @@ sleep 0.5;	// Lets the server\client catchup, otherwise BIS_revive_incapacitated
 ///	To do: https://github.com/Diffusion9/Sandbox.Stratis/issues/19
 
 if (player getVariable ["BIS_revive_incapacitated", false]) exitWith {
+	// Re-applies uniform texture after players die, if they have the right uniform.
+	if (uniform player == "U_BG_Guerrilla_6_1") then {
+		[player, true] call ASG_fnc_setUniform;
+	};	
 	// Anything < 2 doesn't seem to work reliably, oddly enough.
 	sleep 2; // I suppose we could use an event handler here, maybe, but this seems to work for now.
 	// Ensures the players are reconnected to the proper radio channel after death.
@@ -14,10 +18,6 @@ if (player getVariable ["BIS_revive_incapacitated", false]) exitWith {
 				[true, _i, _channel] call ASG_fnc_radioControl;
 			};
 		};
-	};
-	// Re-applies uniform texture after players die, if they have the right uniform.
-	if (uniform player == "U_BG_Guerrilla_6_1") then {
-		[player, true] call ASG_fnc_setUniform;
 	};
 	true;
 };
