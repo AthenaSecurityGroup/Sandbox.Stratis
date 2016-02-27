@@ -13,7 +13,7 @@ private ["_dist"];
 if (count _this > 1) then {
 	_dist = _this select 1;
 } else {
-	_dist = ((player distance getmarkerpos _markerName) > 20);
+	_dist = ((player distance getmarkerpos _markerName) > 50);
 };
 
 ///

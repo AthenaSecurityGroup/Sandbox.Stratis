@@ -42,7 +42,7 @@ if (isNil {_landingZone}) exitWith {
 	publicVariable "comm_logisticsMenu";
 };
 
-format ["Resupply requested to the %1", _baseName] remoteExec ["hint", _playerID];
+format ["Request for resupply to the %1 has been received.", _baseName] remoteExec ["hint", _playerID];
 
 waitUntil {
 	if (!simulationEnabled heloName) exitWith {
@@ -50,6 +50,7 @@ waitUntil {
 		heloName hideObjectGlobal false;
 		(driver heloName) disableAI "Target";
 		(driver heloName) disableAI "Autotarget";
+		format ["Resupply is en route to the %1", _baseName] remoteExec ["hint", _playerID];
 		true;
 	};
 	(!simulationEnabled heloName);
@@ -104,7 +105,7 @@ _heloDepartOrder = [heloName,["Order to Depart", {
 		_waypoint1 setWayPointType "LOAD";
 		_waypoint1 setWayPointCombatMode "BLUE";
 		_waypoint1 setWaypointStatements ["true","[(respawnHelo select 0), true] remoteExec ['hideObjectGlobal', 2]; [(respawnHelo select 0), false] remoteExec ['enableSimulationGlobal', 2]; removeAllActions (respawnHelo select 0)"];
-	}, "", 0, false, true, "", ""]] remoteExec ["addAction", 0, true];
+	}, "", 0, false, true, "", "((str player) in ['A15','A16','A25','A26','A35','A36','A4','A5','A6','A6O','A7'])"]] remoteExec ["addAction", 0, true];
 
 waitUntil {
 	if (!simulationEnabled heloName) exitWith {
@@ -131,4 +132,4 @@ waitUntil {
 		_id = (owner (missionNamespace getVariable _x));
 		_valueMessage remoteExec ["hint", _id];
 	};
-} forEach (CHANNEL_DATA select 3);
+} forEach ['A15','A16','A25','A26','A35','A36','A4','A5','A6','A6O','A7'];

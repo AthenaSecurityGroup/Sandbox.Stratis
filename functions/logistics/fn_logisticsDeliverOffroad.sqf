@@ -75,7 +75,7 @@ waitUntil {
 		true;
 		heloName land "NONE";
 		heloName setSlingLoad objNull;
-		sleep 2;
+		sleep 3;
 		_veh allowDamage true;
 	};
 	(((heloName distance slingZone) <= 8));
