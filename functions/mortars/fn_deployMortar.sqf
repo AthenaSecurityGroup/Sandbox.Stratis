@@ -8,7 +8,7 @@
 */
 
 // Mortar skill defines.
-_mortarRad = 1000;	// The trigger radius for the mortar to detect targets.
+_mortarRad = 3000;	// The trigger radius for the mortar to detect targets.
 
 private ["_mortarPOS", "_faction"];
 _mortarPOS = _this select 0;
@@ -41,11 +41,12 @@ switch (_faction) do {
 // Generate variable names for use later.
 _mortarVarStr = format ["m_%1", round floor (_mortarPOS select 0)];
 _mortarTrgStr = format ["%1_trigger", _mortarVarStr];
-_mortarSpotStr = format ["%1_spotArea", _mortarVarStr];
 
 // Create mortar, and add to Zeus.
 diag_log format ["MORTAR:	%1 was deployed.", _mortarVarStr];
 missionNameSpace setVariable [_mortarVarStr, [_mortarPOS, 0 , _mortarType, _mortarSide] call BIS_fnc_spawnVehicle];
+_mortarSister = format ["%1_sister", _mortarVarStr];
+missionNameSpace setVariable [_mortarSister, (_mortarType createVehicle [((_mortarPOS select 0) - 5),((_mortarPOS select 1) - 5),(_mortarPOS select 2)] )];
 ((missionNamespace getVariable _mortarVarStr) select 2) setGroupId [_mortarVarStr];
 Zeus addCuratorEditableObjects [[(missionNameSpace getVariable _mortarVarStr) select 0], true];
 
@@ -67,35 +68,41 @@ if (_mortarSide == EAST) then {
 (missionNameSpace getVariable _mortarTrgStr) setTriggerStatements ["this", "
 	_target = (thisList select 0);
 	_mortar = (((getPOS thisTrigger) nearEntities ['StaticMortar', 1]) select 0);
-	_mortarVarStr = (str (group _mortar) splitString 'R ' select 0);
+	_mortarVarStr = (str (group _mortar) splitString ' ' select 1);
 	_mortarScriptName = format ['%1_trackScript', _mortarVarStr];
+	_mortarSister = format ['%1_sister', _mortarVarStr];
 	if (isNil {_mortar}) exitWith {
 		terminate (missionNamespace getVariable _mortarScriptName);
 		missionNameSpace setVariable [_mortarScriptName, nil];
 		missionNameSpace setVariable [(format ['%1_target', _mortarVarStr]), nil];
 		deleteVehicle thisTrigger;
-		diag_log format ['MORTAR:	Mortar is dead. Terminating.'];
+		(missionNameSpace getVariable _mortarSister) setDamage 1;
+		diag_log format ['MORTAR:	Mortar is nil. Terminating.'];
 	};
-	missionNameSpace setVariable [_mortarScriptName, [_target, _mortar] spawn ASG_fnc_mortarFireLogic];
+	missionNameSpace setVariable [_mortarScriptName, [_target, _mortar, _mortarVarStr] spawn ASG_fnc_mortarFireLogic];
 	missionNameSpace setVariable [(format ['%1_target', _mortarVarStr]), _target];
 	diag_log format ['MORTAR:	A target is present for %1', _mortarVarStr];
 	if (!alive _mortar) then {
 		terminate (missionNamespace getVariable _mortarScriptName);
 		missionNameSpace setVariable [_mortarScriptName, nil];
 		missionNameSpace setVariable [(format ['%1_target', _mortarVarStr]), nil];
+		_mortarSister = format ['%1_sister', _mortarVarStr];		
 		deleteVehicle thisTrigger;
+		(missionNameSpace getVariable _mortarSister) setDamage 1;
 		diag_log format ['MORTAR:	Mortar is dead. Terminating.'];
 	};
 ", "
 	_mortar = (((getPOS thisTrigger) nearEntities ['StaticMortar', 1]) select 0);
-	_mortarVarStr = (str (group _mortar) splitString 'R ' select 0);
+	_mortarVarStr = (str (group _mortar) splitString ' ' select 1);
 	_mortarScriptName = format ['%1_trackScript', _mortarVarStr];
+	_mortarSister = format ['%1_sister', _mortarVarStr];
 	terminate (missionNamespace getVariable _mortarScriptName);
 	missionNameSpace setVariable [_mortarScriptName, nil];
 	missionNameSpace setVariable [(format ['%1_target', _mortarVarStr]), nil];
 	diag_log format ['MORTAR:	Targets left area. %1 terminating.', _mortarVarStr];
 	if (!alive _mortar) then {
 		deleteVehicle thisTrigger;
+		(missionNameSpace getVariable _mortarSister) setDamage 1;
 	};
 "];
 
