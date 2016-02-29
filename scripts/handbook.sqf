@@ -806,8 +806,8 @@ If an element recieves indirect fire:
 5. The element leader forms a secure rally point and reports the incident to higher.
 "]];
 
-player creatediaryrecord ["drills",["2. React to Close Ambush","
-If an element is ambushed:
+player creatediaryrecord ["drills",["2. React to Ambush","
+Close Ambush:
 <br/><br/>
 1. Elements in the killzone will use heavy smoke and fire to assault through the ambush.
 <br/><br/>
@@ -818,6 +818,15 @@ If an element is ambushed:
 a. BREAK CONTACT if possible.
 <br/><br/>
 b. ATTACK if necessary.
+<br/><br/>
+Far Ambush:
+<br/><br/>
+1. Elements in the killzone will immediately use heavy smoke and fire to BREAK CONTACT.
+<br/><br/>
+2. Elements not in contact will offer support and security to the ambushed elements.
+<br/><br/>
+3. Once the ambushed element escapes the killzone, elements will consolidate on a rally point and prepare to continue operations.
+<br/><br/>
 "]];
 
 player creatediaryrecord ["drills",["1. React to Contact","
