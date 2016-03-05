@@ -148,7 +148,7 @@ if hasInterface then { //If not a dedicated server, do this
     MOSES_radio_recieve = {
         if !(params [["_from",objNull,[objNull]],["_start",true,[true]],["_channel","",[""]]]) exitWith {};
         diag_log format["RADIO: %1 of broadcast from %2 in %3",if _start then [{"Start"},{"End"}],name _from,_channel];
-        playSound format["radio_%1",if _start then [{"start"},{"end"}]];
+		// playSound format["radio_%1",if _start then [{"start"},{"end"}]];
     };
     findDisplay 46 displayAddEventHandler ["KeyDown",{ //Add KeyDown event handler for tracking key presses
         _keys = actionKeys "PushToTalk"; //Jeys associated with "PushToTalk" control
@@ -203,7 +203,7 @@ if hasInterface then { //If not a dedicated server, do this
         if (_this select 1 in actionKeys "NextChannel" || _this select 1 in actionKeys "PrevChannel") exitWith {
             if MOSES_radio_broadcasting exitWith {TRUE}; //If already broadcasting exit
             playsound "clicksoft"; //play click on channel change
-            5 enableChannel ({player distance _x < 50} count allPlayers < 18); //Disable direct when more than 18 players within 75m
+            5 enableChannel ({player distance _x < 50} count allPlayers < 20); //Disable direct when more than 18 players within 75m
             FALSE
         };
     }];

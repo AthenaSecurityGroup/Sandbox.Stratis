@@ -22,7 +22,7 @@
 #define IS_PUBLIC				true
 #define IS_LOCAL				false
 
-#define LOG_ENABLED				false
+#define LOG_ENABLED				true
 
 #define VAR_INITIALIZED				"BIS_dg_ini"
 #define VAR_GROUP_REGISTERED			"BIS_dg_reg"
@@ -41,8 +41,8 @@
 #define VAR_UI_DISPLAY				"BIS_dynamicGroups_display"
 
 private ["_mode", "_params"];
-_mode   = [_this, 0, "", [""]] call BIS_fnc_param;
-_params = [_this, 1, [], [[]]] call BIS_fnc_param;
+_mode   = _this param [0, "", [""]];
+_params = _this param [1, [], [[]]];
 
 switch (_mode) do
 {
@@ -57,7 +57,7 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_registerInitialPlayerGroups"];
-		_registerInitialPlayerGroups = [_params, 0, false, [true]] call BIS_fnc_param;
+		_registerInitialPlayerGroups = _params param [0, false, [true]];
 
 		// Center of each side
 		{ createCenter _x } forEach [WEST, EAST, RESISTANCE, CIVILIAN];
@@ -127,13 +127,13 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_variable", "_message"];
-		_variable 	= [_params, 0, "", [""]] call BIS_fnc_param;
-		_message	= [_params, 1, [], [[]]] call BIS_fnc_param;
+		_variable 	= _params param [0, "", [""]];
+		_message	= _params param [1, [], [[]]];
 
 		private ["_inMode", "_inParams", "_player"];
-		_inMode 	= [_message, 0, "", [""]] call BIS_fnc_param;
-		_inParams 	= [_message, 1, [], [[]]] call BIS_fnc_param;
-		_player		= [_message, 2, objNull, [objNull]] call BIS_fnc_param;
+		_inMode 	= _message param [0, "", [""]];
+		_inParams 	= _message param [1, [], [[]]];
+		_player		= _message param [2, objNull, [objNull]];
 
 		// Call requested function
 		[_inMode, _inParams] call SELF;
@@ -161,16 +161,16 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_group", "_leader"];
-		_group	= [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_leader	= [_params, 1, objNull, [objNull]] call BIS_fnc_param;
-		_data	= [_params, 2, [], [[]]] call BIS_fnc_param;
+		_group	= _params param [0, grpNull, [grpNull]];
+		_leader	= _params param [1, objNull, [objNull]];
+		_data	= _params param [2, [], [[]]];
 
 		if (!isNull _group && !isNull _leader && _leader == leader _group) then
 		{
 			private ["_insignia", "_name", "_private"];
-			_insignia	= [_data, 0, ["LoadRandomInsignia"] call SELF, [""]] call BIS_fnc_param;
-			_name		= [_data, 1, groupId _group, [""]] call BIS_fnc_param;
-			_private	= [_data, 2, false, [true]] call BIS_fnc_param;
+			_insignia	= _data param [0, ["LoadRandomInsignia"] call SELF, [""]];
+			_name		= _data param [1, groupId _group, [""]];
+			_private	= _data param [2, false, [true]];
 
 			// Flag as registered
 			_group setVariable [VAR_GROUP_REGISTERED, true, IS_PUBLIC];
@@ -202,8 +202,8 @@ switch (_mode) do
 	case "UnregisterGroup" :
 	{
 		private ["_group", "_keep"];
-		_group 	= [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_keep	= [_params, 1, false, [false]] call BIS_fnc_param;
+		_group 	= _params param [0, grpNull, [grpNull]];
+		_keep	= _params param [1, false, [false]];
 
 		if (!isNull _group && { ["IsGroupRegistered", [_group]] call SELF }) then
 		{
@@ -229,7 +229,7 @@ switch (_mode) do
 	case "IsGroupRegistered" :
 	{
 		private ["_group"];
-		_group = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
+		_group = _params param [0, grpNull, [grpNull]];
 
 		_group getVariable [VAR_GROUP_REGISTERED, false];
 	};
@@ -237,7 +237,7 @@ switch (_mode) do
 	case "DeleteGroup" :
 	{
 		private ["_group"];
-		_group = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
+		_group = _params param [0, grpNull, [grpNull]];
 
 		if (local _group) then
 		{
@@ -245,15 +245,15 @@ switch (_mode) do
 		}
 		else
 		{
-			//["DeleteGroupLocal", [_group]] remoteExecCall ["BIS_fnc_dynamicGroups", groupOwner _group];
-			[["DeleteGroupLocal", [_group]], "BIS_fnc_dynamicGroups", groupOwner _group] call BIS_fnc_mp;
+			//["DeleteGroupLocal", [_group]] remoteExecCall ["ASG_fnc_dynamicGroups", groupOwner _group];
+			[["DeleteGroupLocal", [_group]], "ASG_fnc_dynamicGroups", groupOwner _group] call BIS_fnc_mp;
 		};
 	};
 
 	case "DeleteGroupLocal" :
 	{
 		private ["_group"];
-		_group = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
+		_group = _params param [0, grpNull, [grpNull]];
 
 		if (!isNull _group && { local _group }) then
 		{
@@ -266,8 +266,8 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_group", "_name"];
-		_group  = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_name 	= [_params, 1, "", [""]] call BIS_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_name 	= _params param [1, "", [""]];
 
 		if (!isNull _group && _name != "") then
 		{
@@ -280,8 +280,8 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_group", "_state"];
-		_group  = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_state 	= [_params, 1, true, [true]] call BIS_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_state 	= _params param [1, true, [true]];
 
 		if (!isNull _group) then
 		{
@@ -294,7 +294,7 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_player"];
-		_player = [_params, 0, objNull, [objNull]] call BIS_fnc_param;
+		_player = _params param [0, objNull, [objNull]];
 
 		if (!isNull _player) then
 		{
@@ -321,8 +321,8 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_group", "_player"];
-		_group  = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_player = [_params, 1, objNull, [objNull]] call BIS_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_player = _params param [1, objNull, [objNull]];
 
 		if (!isNull _group && !isNull _player && _group == group _player) then
 		{
@@ -358,8 +358,8 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_group", "_player"];
-		_group  = [_params, 0, grpNull, [grpNull]] call bis_fnc_param;
-		_player = [_params, 1, objNull, [objNull]] call bis_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_player = _params param [1, objNull, [objNull]];
 
 		if (!isNull _player && !isNull _group && group _player != _group) then
 		{
@@ -386,8 +386,8 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_group", "_player"];
-		_group  = [_params, 0, grpNull, [grpNull]] call bis_fnc_param;
-		_player = [_params, 1, objNull, [objNull]] call bis_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_player = _params param [1, objNull, [objNull]];
 
 		if (!isNull _player && !isNull _group && group _player == _group) then
 		{
@@ -416,8 +416,8 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_group", "_player"];
-		_group  = [_params, 0, grpNull, [grpNull]] call bis_fnc_param;
-		_player = [_params, 1, objNull, [objNull]] call bis_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_player = _params param [1, objNull, [objNull]];
 
 		if (!isNull _player && !isNull _group && group _player != _group) then
 		{
@@ -446,9 +446,9 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_group", "_leader", "_player"];
-		_group    = [_params, 0, grpNull, [grpNull]] call bis_fnc_param;
-		_leader   = [_params, 1, objNull, [objNull]] call bis_fnc_param;
-		_player   = [_params, 2, objNull, [objNull]] call bis_fnc_param;
+		_group    = _params param [0, grpNull, [grpNull]];
+		_leader   = _params param [1, objNull, [objNull]];
+		_player   = _params param [2, objNull, [objNull]];
 
 		if (!isNull _group && !isNull _leader && !isNull _player && leader group _leader == _leader && group _player == _group) then
 		{
@@ -475,8 +475,8 @@ switch (_mode) do
 		CHECK(!isServer)
 
 		private ["_groupId", "_player"];
-		_group  = [_params, 0, grpNull, [grpNull]] call bis_fnc_param;
-		_player = [_params, 1, objNull, [objNull]] call bis_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_player = _params param [1, objNull, [objNull]];
 
 		if (!isNull _group && !isNull _player && ["WasPlayerKickedFrom", [_group, _player]] call SELF) then
 		{
@@ -499,8 +499,8 @@ switch (_mode) do
 	case "WasPlayerKickedFrom" :
 	{
 		private ["_group", "_player"];
-		_group  = [_params, 0, grpNull, [grpNull]] call bis_fnc_param;
-		_player = [_params, 1, objNull, [objNull]] call bis_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_player = _params param [1, objNull, [objNull]];
 
 		_group in (_player getVariable [VAR_KICKED_BY, []]);
 	};
@@ -529,7 +529,7 @@ switch (_mode) do
 	case "GetAllGroupsOfSide" :
 	{
 		private ["_side"];
-		_side = [_params, 0, sideUnknown, [sideUnknown]] call bis_fnc_param;
+		_side = _params param [0, sideUnknown, [sideUnknown]];
 
 		private "_groups";
 		_groups = [];
@@ -550,8 +550,8 @@ switch (_mode) do
 	case "GetGroupByName" :
 	{
 		private ["_name", "_side"];
-		_name = [_params, 0, "", [""]] call bis_fnc_param;
-		_side = [_params, 1, sideUnknown, [sideUnknown]] call bis_fnc_param;
+		_name = _params param [0, "", [""]];
+		_side = _params param [1, sideUnknown, [sideUnknown]];
 
 		private ["_groups", "_group"];
 		_groups = ["GetAllGroups"] call SELF;
@@ -573,7 +573,7 @@ switch (_mode) do
 	case "GetFriendlyPlayers" :
 	{
 		private ["_side"];
-		_side = [_params, 0, SIDEUNKNOWN, [SIDEUNKNOWN]] call BIS_fnc_param;
+		_side = _params param [0, SIDEUNKNOWN, [SIDEUNKNOWN]];
 
 		// Validate params
 		if !(_side in [WEST, EAST, RESISTANCE, CIVILIAN]) exitWith
@@ -601,7 +601,7 @@ switch (_mode) do
 	case "PlayerHasGroup" :
 	{
 		private ["_player"];
-		_player = [_params, 0, objNull, [objNull]] call BIS_fnc_param;
+		_player = _params param [0, objNull, [objNull]];
 
 		["IsGroupRegistered", [group _player]] call SELF;
 	};
@@ -612,7 +612,7 @@ switch (_mode) do
 	case "PlayerIsLeader" :
 	{
 		private ["_player"];
-		_player = [_params, 0, objNull, [objNull]] call BIS_fnc_param;
+		_player = _params param [0, objNull, [objNull]];
 
 		_player == leader group _player && ["PlayerHasGroup", [_player]] call SELF;
 	};
@@ -626,8 +626,8 @@ switch (_mode) do
 		CHECK(!hasInterface)
 
 		private ["_player", "_registerInitialGroup"];
-		_player 		= [_params, 0, player, [objNull]] call BIS_fnc_param;
-		_registerInitialGroup 	= [_params, 1, false, [true]] call BIS_fnc_param;
+		_player 		= _params param [0, player, [objNull]];
+		_registerInitialGroup 	= _params param [1, false, [true]];
 
 		if (!local _player) exitWith
 		{
@@ -652,7 +652,7 @@ switch (_mode) do
 			"RscDisplayRespawnKeyDown",
 			{
 				private "_key";
-				_key = [_this, 1, -1, [0]] call BIS_fnc_param;
+				_key = _this param [1, -1, [0]];
 
 				if (_key in actionKeys UI_OPEN_KEY) then
 				{
@@ -695,7 +695,7 @@ switch (_mode) do
 		CHECK(!hasInterface)
 
 		private ["_player"];
-		_player = [_params, 0, player, [objNull]] call BIS_fnc_param;
+		_player = _params param [0, player, [objNull]];
 
 		if (!local _player) exitWith
 		{
@@ -725,8 +725,8 @@ switch (_mode) do
 		CHECK(!hasInterface)
 
 		private ["_inMode", "_inParams"];
-		_inMode         = [_params, 0, "", [""]] call BIS_fnc_param;
-		_inParams       = [_params, 1, [], [[]]] call BIS_fnc_param;
+		_inMode         = _params param [0, "", [""]];
+		_inParams       = _params param [1, [], [[]]];
 
 		// If we are on the server, we execute directly otherwise we send to the server to be executed
 		if (isServer) then
@@ -768,55 +768,52 @@ switch (_mode) do
 		CHECK(!hasInterface)
 
 		private ["_display"];
-		_display = [_params, 0, displayNull, [displayNull]] call BIS_fnc_param;
+		_display = _params param [0, displayNull, [displayNull]];
 
 		[_display] spawn
 		{
 			scriptName "DynamicGroups: AddKeyEvents";
 			disableSerialization;
 
-			with UiNamespace do
+			private ["_display", "_varName"];
+			_display = _this select 0;
+			_varName = "BIS_dynamicGroups_keyMain";
+
+			// Wait for display to become available
+			if (isNull _display) then
 			{
-				private ["_display", "_varName"];
-				_display = _this select 0;
-				_varName = "BIS_dynamicGroups_keyMain";
+				waitUntil{ !isNull (findDisplay 46) };
 
-				// Wait for display to become available
-				if (isNull _display) then
-				{
-					waitUntil{ !isNull (findDisplay 46) };
+				_display = (findDisplay 46);
+				_varName = "BIS_dynamicGroups_key";
+			};
 
-					_display = (findDisplay 46);
-					_varName = "BIS_dynamicGroups_key";
-				};
+			// Exit in case event is already registered
+			if (!isNil { missionNamespace getVariable _varName }) then
+			{
+				private ["_index", "_down", "_up"];
+				_index = missionNamespace getVariable _varName;
+				_down = _index select 0;
+				_up = _index select 1;
 
-				// Exit in case event is already registered
-				if (!isNil { uiNamespace getVariable _varName }) then
-				{
-					private ["_index", "_down", "_up"];
-					_index = uiNamespace getVariable _varName;
-					_down = _index select 0;
-					_up = _index select 1;
+				// Reset event handlers
+				_display displayRemoveEventHandler ["KeyDown", _down];
+				_display displayRemoveEventHandler ["KeyUp", _up];
+				missionNamespace setVariable [_varName, nil];
+			};
 
-					// Reset event handlers
-					_display displayRemoveEventHandler ["KeyDown", _down];
-					_display displayRemoveEventHandler ["KeyUp", _up];
-					uiNamespace setVariable [_varName, nil];
-				};
+			// Add event handlers to display
+			private ["_down", "_up"];
+			_down   = _display displayAddEventHandler ["KeyDown", "['OnKeyDown', _this] call ASG_fnc_dynamicGroups;"];
+			_up     = _display displayAddEventHandler ["KeyUp", "['OnKeyUp', _this] call ASG_fnc_dynamicGroups;"];
 
-				// Add event handlers to display
-				private ["_down", "_up"];
-				_down   = _display displayAddEventHandler ["KeyDown", "with uiNamespace do { ['OnKeyDown', _this] call BIS_fnc_dynamicGroups; };"];
-				_up     = _display displayAddEventHandler ["KeyUp", "with uiNamespace do { ['OnKeyUp', _this] call BIS_fnc_dynamicGroups; };"];
+			// Store in ui namespace
+			missionNamespace setVariable [_varName, [_down, _up]];
 
-				// Store in ui namespace
-				uiNamespace setVariable [_varName, [_down, _up]];
-
-				// Log
-				if (LOG_ENABLED) then
-				{
-					["AddKeyEvents: Key down event added for (%1)", _varName] call BIS_fnc_logFormat;
-				};
+			// Log
+			if (LOG_ENABLED) then
+			{
+				["AddKeyEvents: Key down event added for (%1)", _varName] call BIS_fnc_logFormat;
 			};
 		};
 	};
@@ -830,47 +827,44 @@ switch (_mode) do
 		CHECK(!hasInterface)
 
 		private ["_display"];
-		_display = [_params, 0, displayNull, [displayNull]] call BIS_fnc_param;
+		_display = _params param [0, displayNull, [displayNull]];
 
 		[_display] spawn
 		{
 			scriptName "DynamicGroups: RemoveKeyEvents";
 			disableSerialization;
 
-			with UiNamespace do
+			private ["_display", "_varName"];
+			_display = _this select 0;
+			_varName = "BIS_dynamicGroups_keyMain";
+
+			// Wait for display to become available
+			if (isNull _display) then
 			{
-				private ["_display", "_varName"];
-				_display = _this select 0;
-				_varName = "BIS_dynamicGroups_keyMain";
+				waitUntil{ !isNull (findDisplay 46) };
 
-				// Wait for display to become available
-				if (isNull _display) then
-				{
-					waitUntil{ !isNull (findDisplay 46) };
+				_display = (findDisplay 46);
+				_varName = "BIS_dynamicGroups_key";
+			};
 
-					_display = (findDisplay 46);
-					_varName = "BIS_dynamicGroups_key";
-				};
+			// Exit in case event is already registered
+			if (!isNil { missionNamespace getVariable _varName }) then
+			{
+				private ["_index", "_down", "_up"];
+				_index = missionNamespace getVariable _varName;
+				_down = _index select 0;
+				_up = _index select 1;
 
-				// Exit in case event is already registered
-				if (!isNil { uiNamespace getVariable _varName }) then
-				{
-					private ["_index", "_down", "_up"];
-					_index = uiNamespace getVariable _varName;
-					_down = _index select 0;
-					_up = _index select 1;
+				// Reset event handlers
+				_display displayRemoveEventHandler ["KeyDown", _down];
+				_display displayRemoveEventHandler ["KeyUp", _up];
+				missionNamespace setVariable [_varName, nil];
+			};
 
-					// Reset event handlers
-					_display displayRemoveEventHandler ["KeyDown", _down];
-					_display displayRemoveEventHandler ["KeyUp", _up];
-					uiNamespace setVariable [_varName, nil];
-				};
-
-				// Log
-				if (LOG_ENABLED) then
-				{
-					["RemoveKeyEvents: Key down event removed for (%1)", _varName] call BIS_fnc_logFormat;
-				};
+			// Log
+			if (LOG_ENABLED) then
+			{
+				["RemoveKeyEvents: Key down event removed for (%1)", _varName] call BIS_fnc_logFormat;
 			};
 		};
 	};
@@ -884,8 +878,8 @@ switch (_mode) do
 		CHECK(!hasInterface)
 
 		private ["_key", "_ctrl"];
-		_key  = [_params, 1, -1, [0]] call BIS_fnc_param;
-		_ctrl = [_params, 3, false, [false]] call BIS_fnc_param;
+		_key  = _params param [1, -1, [0]];
+		_ctrl = _params param [3, false, [false]];
 
 		if (_key in actionKeys UI_OPEN_KEY && !_ctrl) then
 		{
@@ -913,8 +907,8 @@ switch (_mode) do
 		CHECK(!hasInterface)
 
 		private ["_key", "_ctrl"];
-		_key  = [_params, 1, -1, [0]] call BIS_fnc_param;
-		_ctrl = [_params, 3, false, [false]] call BIS_fnc_param;
+		_key  = _params param [1, -1, [0]];
+		_ctrl = _params param [3, false, [false]];
 
 		uiNamespace setVariable ["BIS_dynamicGroups_keyDownTime", nil];
 
@@ -1003,9 +997,9 @@ switch (_mode) do
 	case "AddInvite" :
 	{
 		private ["_group", "_from", "_to"];
-		_group	= [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_from	= [_params, 1, objNull, [objNull]] call BIS_fnc_param;
-		_to	= [_params, 2, objNull, [objNull]] call BIS_fnc_param;
+		_group	= _params param [0, grpNull, [grpNull]];
+		_from	= _params param [1, objNull, [objNull]];
+		_to	= _params param [2, objNull, [objNull]];
 
 		// Validate params
 		if (isNull _group) exitWith { "AddInvite: Group is null" call BIS_fnc_error; };
@@ -1041,12 +1035,12 @@ switch (_mode) do
 		_to setVariable [VAR_INVITES, _invitations, IS_PUBLIC];
 
 		// Fire event on target computer
-		//["OnInvitationReceived", [_group, _to, _from]] remoteExecCall ["BIS_fnc_dynamicGroups", _to];
-		[["OnInvitationReceived", [_group, _to, _from]], "BIS_fnc_dynamicGroups", _to] call BIS_fnc_mp;
+		//["OnInvitationReceived", [_group, _to, _from]] remoteExecCall ["ASG_fnc_dynamicGroups", _to];
+		[["OnInvitationReceived", [_group, _to, _from]], "ASG_fnc_dynamicGroups", _to] call BIS_fnc_mp;
 
 		// If player was kicked from group we unkick since he was invited
-		//["UnKickPlayer", [_group, _to]] remoteExecCall ["BIS_fnc_dynamicGroups", 2];
-		[["UnKickPlayer", [_group, _to]], "BIS_fnc_dynamicGroups", false] call BIS_fnc_mp;
+		//["UnKickPlayer", [_group, _to]] remoteExecCall ["ASG_fnc_dynamicGroups", 2];
+		[["UnKickPlayer", [_group, _to]], "ASG_fnc_dynamicGroups", false] call BIS_fnc_mp;
 
 		// Log
 		if (LOG_ENABLED) then
@@ -1060,8 +1054,8 @@ switch (_mode) do
 	 */
 	case "RemoveInvite" : {
 		private ["_group", "_player"];
-		_group	= [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_player	= [_params, 1, objNull, [objNull]] call BIS_fnc_param;
+		_group	= _params param [0, grpNull, [grpNull]];
+		_player	= _params param [1, objNull, [objNull]];
 
 		if (isNull _group) exitWith { "RemoveInvite: Group is null" call BIS_fnc_error; };
 		if (isNull _player) exitWith { "RemoveInvite: Invite holder is null" call BIS_fnc_error; };
@@ -1103,8 +1097,8 @@ switch (_mode) do
 	case "HasInvite" :
 	{
 		private ["_group", "_player"];
-		_group	= [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_player	= [_params, 1, objNull, [objNull]] call BIS_fnc_param;
+		_group	= _params param [0, grpNull, [grpNull]];
+		_player	= _params param [1, objNull, [objNull]];
 
 		private ["_invitations", "_hasInvitation"];
 		_invitations = _player getVariable [VAR_INVITES, []];
@@ -1132,8 +1126,8 @@ switch (_mode) do
 	case "GetPlayerInvites" :
 	{
 		private ["_player", "_maxLifeTime"];
-		_player         = [_params, 0, objNull, [objNull]] call BIS_fnc_param;
-		_maxLifeTime    = [_params, 1, 99999999, [0]] call BIS_fnc_param;
+		_player         = _params param [0, objNull, [objNull]];
+		_maxLifeTime    = _params param [1, 99999999, [0]];
 
 		private ["_invites", "_validInvites"];
 		_invites        = _player getVariable [VAR_INVITES, []];
@@ -1155,15 +1149,15 @@ switch (_mode) do
 	case "OnGroupJoin" :
 	{
 		private ["_group", "_leader", "_who"];
-		_group  = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_leader = [_params, 1, objNull, [objNull]] call BIS_fnc_param;
-		_who    = [_params, 2, objNull, [objNull]] call BIS_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_leader = _params param [1, objNull, [objNull]];
+		_who    = _params param [2, objNull, [objNull]];
 
 		if (!isNull _leader && !isNull _who && { _leader != _who }) then
 		{
 			// Show notification
-			//["LocalShowNotification", ["DynamicGroups_PlayerJoined", [name _who], _leader]] remoteExecCall ["BIS_fnc_dynamicGroups", _leader];
-			[["LocalShowNotification", ["DynamicGroups_PlayerJoined", [name _who], _leader]], "BIS_fnc_dynamicGroups", _leader] call BIS_fnc_mp;
+			//["LocalShowNotification", ["DynamicGroups_PlayerJoined", [name _who], _leader]] remoteExecCall ["ASG_fnc_dynamicGroups", _leader];
+			[["LocalShowNotification", ["DynamicGroups_PlayerJoined", [name _who], _leader]], "ASG_fnc_dynamicGroups", _leader] call BIS_fnc_mp;
 		};
 	};
 
@@ -1173,14 +1167,14 @@ switch (_mode) do
 	case "OnGroupLeave" :
 	{
 		private ["_group", "_leader", "_who"];
-		_group  = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_leader = [_params, 1, objNull, [objNull]] call BIS_fnc_param;
-		_who    = [_params, 2, objNull, [objNull]] call BIS_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_leader = _params param [1, objNull, [objNull]];
+		_who    = _params param [2, objNull, [objNull]];
 
 		if (!isNull _leader && !isNull _who && { _leader != _who }) then
 		{
-			//["LocalShowNotification", ["DynamicGroups_PlayerLeft", [name _who], _leader]] remoteExecCall ["BIS_fnc_dynamicGroups", _leader];
-			[["LocalShowNotification", ["DynamicGroups_PlayerLeft", [name _who], _leader]], "BIS_fnc_dynamicGroups", _leader] call BIS_fnc_mp;
+			//["LocalShowNotification", ["DynamicGroups_PlayerLeft", [name _who], _leader]] remoteExecCall ["ASG_fnc_dynamicGroups", _leader];
+			[["LocalShowNotification", ["DynamicGroups_PlayerLeft", [name _who], _leader]], "ASG_fnc_dynamicGroups", _leader] call BIS_fnc_mp;
 		};
 	};
 
@@ -1192,9 +1186,9 @@ switch (_mode) do
 		CHECK(!hasInterface)
 
 		private ["_group", "_to", "_from"];
-		_group  = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_to     = [_params, 1, objNull, [objNull]] call BIS_fnc_param;
-		_from   = [_params, 2, objNull, [objNull]] call BIS_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_to     = _params param [1, objNull, [objNull]];
+		_from   = _params param [2, objNull, [objNull]];
 
 		CHECK(player != _to)
 
@@ -1216,14 +1210,14 @@ switch (_mode) do
 	case "OnPromotedToLeader" :
 	{
 		private ["_group", "_newLeader", "_oldLeader"];
-		_group          = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_newLeader      = [_params, 1, objNull, [objNull]] call BIS_fnc_param;
-		_oldLeader      = [_params, 2, objNull, [objNull]] call BIS_fnc_param;
+		_group          = _params param [0, grpNull, [grpNull]];
+		_newLeader      = _params param [1, objNull, [objNull]];
+		_oldLeader      = _params param [2, objNull, [objNull]];
 
 		if (!isNull _oldLeader && !isNull _newLeader && { _oldLeader != _newLeader }) then
 		{
-			//["LocalShowNotification", ["DynamicGroups_PromotedToLeader", [name _oldLeader], _newLeader]] remoteExecCall ["BIS_fnc_dynamicGroups", _newLeader];
-			[["LocalShowNotification", ["DynamicGroups_PromotedToLeader", [name _oldLeader], _newLeader]], "BIS_fnc_dynamicGroups", _newLeader] call BIS_fnc_mp;
+			//["LocalShowNotification", ["DynamicGroups_PromotedToLeader", [name _oldLeader], _newLeader]] remoteExecCall ["ASG_fnc_dynamicGroups", _newLeader];
+			[["LocalShowNotification", ["DynamicGroups_PromotedToLeader", [name _oldLeader], _newLeader]], "ASG_fnc_dynamicGroups", _newLeader] call BIS_fnc_mp;
 		};
 
 		// Log
@@ -1239,14 +1233,14 @@ switch (_mode) do
 	case "OnGroupDisbanded" :
 	{
 		private ["_group", "_who", "_oldLeader"];
-		_group          = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_who            = [_params, 1, objNull, [objNull]] call BIS_fnc_param;
-		_oldLeader      = [_params, 2, objNull, [objNull]] call BIS_fnc_param;
+		_group          = _params param [0, grpNull, [grpNull]];
+		_who            = _params param [1, objNull, [objNull]];
+		_oldLeader      = _params param [2, objNull, [objNull]];
 
 		if (!isNull _oldLeader && !isNull _who && { _oldLeader != _who }) then
 		{
-			//["LocalShowNotification", ["DynamicGroups_GroupDisbanded", [name _oldLeader], _who]] remoteExecCall ["BIS_fnc_dynamicGroups", _who];
-			[["LocalShowNotification", ["DynamicGroups_GroupDisbanded", [name _oldLeader], _who]], "BIS_fnc_dynamicGroups", _who] call BIS_fnc_mp;
+			//["LocalShowNotification", ["DynamicGroups_GroupDisbanded", [name _oldLeader], _who]] remoteExecCall ["ASG_fnc_dynamicGroups", _who];
+			[["LocalShowNotification", ["DynamicGroups_GroupDisbanded", [name _oldLeader], _who]], "ASG_fnc_dynamicGroups", _who] call BIS_fnc_mp;
 		};
 
 		// Log
@@ -1262,14 +1256,14 @@ switch (_mode) do
 	case "OnKicked" :
 	{
 		private ["_group", "_who", "_oldLeader"];
-		_group  = [_params, 0, grpNull, [grpNull]] call BIS_fnc_param;
-		_who    = [_params, 1, objNull, [objNull]] call BIS_fnc_param;
-		_leader = [_params, 2, objNull, [objNull]] call BIS_fnc_param;
+		_group  = _params param [0, grpNull, [grpNull]];
+		_who    = _params param [1, objNull, [objNull]];
+		_leader = _params param [2, objNull, [objNull]];
 
 		if (!isNull _leader && !isNull _who && { _who != _leader }) then
 		{
-			//["LocalShowNotification", ["DynamicGroups_Kicked", [name _leader], _who]] remoteExecCall ["BIS_fnc_dynamicGroups", _who];
-			[["LocalShowNotification", ["DynamicGroups_Kicked", [name _leader], _who]], "BIS_fnc_dynamicGroups", _who] call BIS_fnc_mp;
+			//["LocalShowNotification", ["DynamicGroups_Kicked", [name _leader], _who]] remoteExecCall ["ASG_fnc_dynamicGroups", _who];
+			[["LocalShowNotification", ["DynamicGroups_Kicked", [name _leader], _who]], "ASG_fnc_dynamicGroups", _who] call BIS_fnc_mp;
 		};
 
 		// Log
@@ -1287,7 +1281,7 @@ switch (_mode) do
 	case "LoadInsignia" :
 	{
 		private ["_class"];
-		_class = [_params, 0, "", [""]] call BIS_fnc_param;
+		_class = _params param [0, "", [""]];
 
 		private ["_cfg", "_displayName", "_texture", "_author"];
 		_cfg            = configfile >> "CfgUnitInsignia" >> _class;
@@ -1309,7 +1303,7 @@ switch (_mode) do
 	case "GetInsigniaDisplayName" :
 	{
 		private ["_class"];
-		_class = [_params, 0, "", [""]] call BIS_fnc_param;
+		_class = _params param [0, "", [""]];
 
 		private "_insignia";
 		_insignia = ["LoadInsignia", [_class]] call SELF;
@@ -1320,7 +1314,7 @@ switch (_mode) do
 	case "GetInsigniaTexture" :
 	{
 		private ["_class"];
-		_class = [_params, 0, "", [""]] call BIS_fnc_param;
+		_class = _params param [0, "", [""]];
 
 		private "_insignia";
 		_insignia = ["LoadInsignia", [_class]] call SELF;
@@ -1331,7 +1325,7 @@ switch (_mode) do
 	case "GetInsigniaAuthor" :
 	{
 		private ["_class"];
-		_class = [_params, 0, "", [""]] call BIS_fnc_param;
+		_class = _params param [0, "", [""]];
 
 		private "_insignia";
 		_insignia = ["LoadInsignia", [_class]] call SELF;
@@ -1342,9 +1336,9 @@ switch (_mode) do
 	case "LocalShowNotification" :
 	{
 		private ["_class", "_notificationParams", "_target"];
-		_class                  = [_params, 0, "", [""]] call bis_fnc_param;
-		_notificationParams     = [_params, 1, [], [[]]] call bis_fnc_param;
-		_target                 = [_params, 2, objNull, [objNull]] call bis_fnc_param;
+		_class                  = _params param [0, "", [""]];
+		_notificationParams     = _params param [1, [], [[]]];
+		_target                 = _params param [2, objNull, [objNull]];
 
 		private ["_actionKeysNames", "_keyText", "_string"];
 		_actionKeysNames        = actionkeysnamesarray ["TeamSwitch", 1];
@@ -1362,9 +1356,9 @@ switch (_mode) do
 	case "OnPlayerGroupChanged" :
 	{
 		private ["_player", "_newGroup", "_oldGroup"];
-		_player 	= [_params, 0, objNull, [objNull]] call BIS_fnc_param;
-		_newGroup 	= [_params, 1, grpNull, [grpNull]] call BIS_fnc_param;
-		_oldGroup 	= [_params, 2, grpNull, [grpNull]] call BIS_fnc_param;
+		_player 	= _params param [0, objNull, [objNull]];
+		_newGroup 	= _params param [1, grpNull, [grpNull]];
+		_oldGroup 	= _params param [2, grpNull, [grpNull]];
 
 		if (["IsGroupRegistered", [_newGroup]] call SELF) then
 		{
@@ -1373,6 +1367,37 @@ switch (_mode) do
 		else
 		{
 			// [_player, ""] call BIS_fnc_setUnitInsignia;
+		};
+	};
+
+	case "GetGroupTexture" :
+	{
+		private _group = _params param [0, grpNull, [grpNull]];
+		private _availableInsignias = [];
+
+		if (!isNil { uiNamespace getVariable "RscEGSpectator_availableInsignias" }) then
+		{
+			_availableInsignias = uiNamespace getVariable "RscEGSpectator_availableInsignias";
+		}
+		else
+		{
+			_availableInsignias = (configfile >> "CfgUnitInsignia") call BIS_fnc_getCfgSubClasses;
+			uiNamespace setVariable ["RscEGSpectator_availableInsignias", _availableInsignias];
+		};
+
+		private _insignia = if (count _availableInsignias > 0) then { _availableInsignias select 0 } else { "" };
+		private _groupPicture 	= leader _group getVariable ["BIS_dg_ins", _insignia];
+		private _insigniaTexture = ["GetInsigniaTexture", [_groupPicture]] call ASG_fnc_dynamicGroups;
+
+		if (_insigniaTexture != "") then
+		{
+			_insigniaTexture;
+		}
+		else
+		{
+			private _squadParams = squadParams leader _group;
+			private _squadPicture = if (count _squadParams > 0) then { ((_squadParams select 0) select 4) } else { "" };
+			_squadPicture;
 		};
 	};
 
